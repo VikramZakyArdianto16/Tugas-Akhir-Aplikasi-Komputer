@@ -1,0 +1,1645 @@
+﻿% * Penggunaan Software EMT untuk Plot 3D
+% Vikram Zaky Ardianto
+%% 22305144028
+%% MATEMATIKA E 2022
+% 
+% * 1. Menggambar Grafik Fungsi Dua Variabel
+% * dalam Bentuk Ekspresi Langsung 
+% Fungsi Dua Variabel didefinisikan sebagai sebuah fungsi bernilai real
+% dari dua variabel real, yakni fungsi f yang memadankan setiap pasangan
+%% terurut (x,y) pada suatu himpunan D dari bidang dengan bilangan real
+%% tunggal f (x,y).
+% 
+% Di dalam program numerik EMT, ekspresi adalah string. Jika ditandai
+% sebagai simbolis, mereka akan mencetak melalui Maxima, jika tidak
+% melalui EMT. Ekspresi dalam string digunakan untuk membuat plot dan
+% banyak fungsi numerik. Untuk ini, variabel dalam ekspresi harus "x"
+% dan "y".
+% 
+% Untuk grafik suatu fungsi, gunakan
+% 
+% - ekspresi sederhana dalam x dan y,
+%% - nama fungsi dari dua variabel
+%% - atau matriks data.
+% 
+% ** Grafik Fungsi Linear
+%% Fungsi linear dua variabel biasanya dinyatakan dalam bentuk
+%% latex: f(x,y)=ax+by+c
+% %image% Vikram Zaky Ardianto_22305144028_Plot 3D-001.png
+% // latex: f(x,y)=ax+by+c
+>plot3d("x^3+2*y^2"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-002.png
+>plot3d("x^2+3*y^2"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-003.png
+% ** Grafik Fungsi Kuadrat
+%% Fungsi kuadrat dua variabel biasanya dinyatakan dalam bentuk
+%% latex: f(x,y)=ax^2+by^2+cxy+dx+ey+f
+>plot3d("2*x^2*y+2*y^2"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-004.png
+>plot3d("2*x^2+2*y^2+-x+y-4"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-005.png
+% ** Grafik Fungsi Akar Kuadrat
+>plot3d("sqrt(2*x^2+3*y^2)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-006.png
+>plot3d("sqrt(x^3+4*y^2)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-007.png
+% ** Grafik Fungsi Trigonometri
+>plot3d("2*cos(x)*sin(y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-008.png
+>aspect(2); plot3d("2*x^2+sin(y)",-6,6,0,6*pi):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-009.png
+% 1. aspect(1.5) mengatur aspek rasio pada grafik 3D.
+%% 2. plot3d("2*x^2+sin(y)",-6,6,0,6*pi) adalah fungsi matematika yang
+% digunakan untuk membuat grafik 3D.
+%% 3. -5,5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.
+%% 4. 0,6*pi mengatur rentang sumbu y yang akan ditampilkan pada grafik.
+% 
+% ** Grafik Fungsi Eksponensial
+%% Fungsi eksponensial dua variabel bisa dinyatakan
+%% latex: f(x,y)=a.b^{xy}
+% %image% Vikram Zaky Ardianto_22305144028_Plot 3D-010.png
+% // latex: f(x,y)=a.b^{xy}
+>plot3d("10*2^(2*x*y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-011.png
+>plot3d("-3^(x*y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-012.png
+% ** Grafik Fungsi Logaritma
+%% Fungsi logaritma dua variabel bisa dinyatakan sebagai
+%% latex: f(x,y)=log_b(xy)
+>plot3d("log(2*x*y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-013.png
+>plot3d("log(3*x*y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-014.png
+> 
+% * 2. Menggambar Grafik Fungsi Dua Variabel yang
+% * Rumusnya Disimpan dalam Variabel Ekspresi
+% Fungsi ini dapat memplot plot 3D dengan grafik fungsi dua
+%% variabel, permukaan berparameter, kurva ruang, awan titik,
+%% penyelesaian persamaan tiga variabel. Semua plot 3D bisa
+%% ditampilkan sebagai anaglyph.
+% 
+% fungsi plot3d (x, y, z, xmin, xmax, ymin, ymax, n, a
+% 
+% Parameter
+%% x : ekspresi dalam x dan y
+%% x,y,z : matriks koordinat suatu permukaan
+%% x,y,z : ekspresi dalam x dan y untuk permukaan parametrik
+%% x,y,z : ekspresi dalam x untuk memplot kurva ruang
+% 
+% xmin,xmax,ymin,ymax :
+%%   x,y batas ekspresi
+% 
+% contoh:
+% 
+% ekspresi dalam string
+>expr := "x^2+sin(y)"
+x^2+sin(y)
+% plot ekspresi
+>plot3d(expr,-5,5,0,6*pi):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-015.png
+% 1. x^2+sin(y) adalah fungsi matematika yang digunakan untuk membuat
+% grafik 3D.
+%% 2. -5,5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.
+%% 3. 0,6*pi mengatur rentang sumbu y yang akan ditampilkan pada grafik.
+>expr := "4*x^3*y" 
+4*x^3*y
+>aspect(2); plot3d(expr): 
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-016.png
+% 1. aspect(2) mengatur aspek rasio pada grafik 3D.
+%% 2. plot3d(expr) adalah fungsi matematika yang digunakan untuk membuat
+% grafik 3D.
+>expr := "cos(x)*sin(y)"
+cos(x)*sin(y)
+>plot3d(expr): 
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-017.png
+>expr := "y^2-x^2"
+y^2-x^2
+>aspect(1.5); plot3d(expr,-5,5,-5,5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-018.png
+% 1. aspect(1.5) mengatur aspek rasio pada grafik 3D.
+%% 2. plot3d(expr,-5,5,-5,5) adalah fungsi matematika yang digunakan
+% untuk membuat grafik 3D.
+%% 3. -5,5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.
+%% 4. -5,5 mengatur rentang sumbu y yang akan ditampilkan pada grafik.
+% 
+% ** Fungsi umum untuk plot 3D.
+% 
+% Fungsi plot3d (x, y, z, xmin, xmax, ymin, ymax, n, a,  ..,
+%% c, d, r, scale, fscale, frame, angle, height, zoom, distance, ..)
+% 
+% Rentang plot untuk fungsi dapat ditentukan dengan
+%% - a,b: rentang x
+%% - c,d: rentang y
+%% - r : persegi simetris di sekitar (0,0).
+%% - n : jumlah subinterval untuk plot.
+% 
+% Ada beberapa parameter untuk menskalakan fungsi atau mengubah tampilan
+% grafik.
+%% - fscale: menskalakan ke nilai fungsi (defaultnya adalah <fscale).
+%% - scale: angka atau vektor 1x2 untuk menskalakan ke arah x dan y.
+%% - frame: jenis bingkai (default 1).
+% 
+% Tampilan dapat diubah dengan berbagai cara.
+%% - distance: jarak pandang ke plot.
+%% - zoom: nilai zoom.
+%% - angle: sudut terhadap sumbu y negatif dalam radian.
+%% - height: ketinggian pandangan dalam radian.
+% 
+% Nilai default dapat diperiksa atau diubah dengan fungsi view(). Ini
+% mengembalikan parameter dalam urutan di atas.
+>view 
+[5,  2.6,  2,  0.4]
+% Jarak yang lebih dekat membutuhkan lebih sedikit zoom. Efeknya lebih
+% seperti lensa sudut lebar.
+% 
+% contoh soal:
+>plot3d("exp(-(x^2+y^2)/5)",r=10,n=80,fscale=4,scale=1.2,frame=3,>user):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-019.png
+% 
+% 1. exp(-(x^2+y^2)/5) adalah fungsi matematika yang digunakan untuk
+% membuat grafik 3D.
+%% 2. r=10 mengatur jarak maksimum dari pusat grafik ke tepi grafik.
+%% 3. n=80 mengatur jumlah titik yang digunakan untuk membuat grafik.
+%% 4. fscale=4 mengatur faktor skala untuk warna.
+%% 5. scale=1.2 mengatur faktor skala untuk ukuran grafik.
+%% 6. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.
+>
+% Pada contoh berikut, sudut=0 dan tinggi=0 dilihat dari sumbu y
+% negatif. Label sumbu untuk y disembunyikan dalam kasus ini.
+>plot3d("x^2+y",distance=3,zoom=1,angle=pi/2,height=0):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-020.png
+% 1. x^2+y adalah fungsi matematika yang digunakan untuk membuat grafik
+% 3D.
+%% 2. distance=3 mengatur jarak pandang dari grafik.
+%% 3. zoom=1 mengatur faktor perbesaran grafik.
+%% 4. angle=pi/2 mengatur sudut pandang grafik dalam radian.
+%% 5. height=0 mengatur ketinggian pandangan dari grafik.
+% 
+% Plot selalu terlihat berada di tengah kubus plot. Anda dapat
+% memindahkan bagian tengah dengan parameter tengah.
+>plot3d("x^4+y^2",a=0,b=1,c=-1,d=1,angle=-20°,height=20°, ...
+>  center=[0.4,0,0],zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-021.png
+% 
+% 1. x^4+y^2 adalah fungsi matematika yang digunakan untuk membuat
+% grafik 3D.
+%% 2. a=0,b=1,c=-1,d=1 mengatur rentang sumbu x dan y yang akan
+% ditampilkan pada grafik.
+%% 3. angle=-20° mengatur sudut pandang grafik dalam derajat.
+%% 4. height=20° mengatur ketinggian pandangan dari grafik dalam derajat.
+%% 5. center=[0.4,0,0] mengatur pusat pandangan dari grafik.
+%% 6. zoom=5 mengatur faktor perbesaran grafik.
+% 
+% Plotnya diskalakan agar sesuai dengan unit kubus untuk dilihat. Jadi
+% tidak perlu mengubah jarak atau zoom tergantung ukuran plot. Namun
+% labelnya mengacu pada ukuran sebenarnya.
+% 
+% Jika Anda mematikannya dengan scale=false, Anda harus berhati-hati
+% agar plot tetap masuk ke dalam jendela plotting, dengan mengubah jarak
+% pandang atau zoom, dan memindahkan bagian tengah.
+% 
+>plot3d("5*exp(-x^2-y^2)",r=2,<fscale,<scale,distance=13,height=50°, ...
+>  center=[0,0,-2],frame=3):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-022.png
+% 1. 5*exp(-x^2-y^2) adalah fungsi matematika yang digunakan untuk
+% membuat grafik 3D.
+%% 2. r=2 mengatur jarak maksimum dari pusat grafik ke tepi grafik.
+%% 3. <fscale mengatur faktor skala untuk warna.
+%% 4. <scale mengatur faktor skala untuk ukuran grafik.
+%% 5. distance=13 mengatur jarak pandang dari grafik.
+%% 6. height=50° mengatur ketinggian pandangan dari grafik dalam derajat.
+%% 7. center=[0,0,-2] mengatur pusat pandangan dari grafik.
+%% 8. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.
+% 
+% Plot kutub juga tersedia. Parameter polar=true menggambar plot kutub.
+% Fungsi tersebut harus tetap merupakan fungsi dari x dan y. Parameter
+% "fscale" menskalakan fungsi dengan skalanya sendiri. Kalau tidak,
+% fungsinya akan diskalakan agar sesuai dengan kubus.
+>plot3d("1/(x^2+y^2+1)",r=5,>polar, ...
+>fscale=2,>hue,n=100,zoom=4,>contour,color=blue):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-023.png
+% 1. 1/(x^2+y^2+1) adalah fungsi matematika yang digunakan untuk membuat
+% grafik 3D.
+%% 2. r=5 mengatur jarak maksimum dari pusat grafik ke tepi grafik.
+%% 3. polar mengatur tampilan grafik dalam koordinat polar.
+%% 4. fscale=2 mengatur faktor skala untuk warna.
+%% 5. hue mengatur skala warna yang digunakan pada grafik.
+%% 6. n=100 mengatur jumlah titik yang digunakan untuk membuat grafik.
+%% 7. zoom=4 mengatur faktor perbesaran grafik.
+%% 8. contour mengatur tampilan garis kontur pada grafik.
+%% 9. color=blue mengatur warna garis kontur pada grafik.
+>
+>function f(r) := exp(-r/2)*cos(r); ...
+>plot3d("f(x^2+y^2)",>polar,scale=[1,1,0.4],r=pi,frame=3,zoom=4):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-024.png
+% 1. function f(r) := exp(-r/2)*cos(r) adalah fungsi matematika yang
+% didefinisikan sebagai f(r) = e^(-r/2) * cos(r).
+%% 2. plot3d("f(x^2+y^2)",polar,scale=[1,1,0.4],r=pi,frame=3,zoom=4)
+% adalah perintah untuk membuat grafik 3D dari fungsi f(x^2+y^2).
+%% 3. polar mengatur tampilan grafik dalam koordinat polar.
+%% 4. scale=[1,1,0.4] mengatur faktor skala untuk ukuran grafik.
+%% 5. r=pi mengatur jarak maksimum dari pusat grafik ke tepi grafik.
+%% 6. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.
+%% 7. zoom=4 mengatur faktor perbesaran grafik.
+% 
+% Parameter memutar memutar fungsi di x di sekitar sumbu x.
+% 
+% - rotate=1: Menggunakan sumbu x
+%% - rotate=2: Menggunakan sumbu z
+>plot3d("x^2+1",a=-1,b=1,rotate=true,grid=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-025.png
+% 1. x^2+1 adalah fungsi matematika yang digunakan untuk membuat grafik
+% 3D.
+%% 2. a=-1,b=1 mengatur rentang sumbu x yang akan ditampilkan pada
+% grafik.
+%% 3. rotate=true mengatur grafik agar dapat diputar secara interaktif.
+%% 4. grid=5 mengatur jumlah garis koordinat yang ditampilkan pada
+% grafik.
+>plot3d("x^2+1",a=-1,b=1,rotate=2,grid=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-026.png
+% 1. x^2+1 adalah fungsi matematika yang digunakan untuk membuat grafik
+% 3D.
+%% 2. a=-1,b=1 mengatur rentang sumbu x yang akan ditampilkan pada
+% grafik.
+%% 3. rotate=2 mengatur grafik agar dapat diputar secara interaktif
+% dengan menggunakan mouse.
+%% 4. grid=5 mengatur jumlah garis koordinat yang ditampilkan pada
+% grafik.
+>plot3d("sqrt(25-x^2)",a=0,b=5,rotate=1):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-027.png
+% 1. sqrt(25-x^2) adalah fungsi matematika yang digunakan untuk membuat
+% grafik 3D.
+%% 2. a=0,b=5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.
+%% 3. rotate=1 mengatur grafik agar dapat diputar secara interaktif.
+>plot3d("x*sin(x)",a=0,b=6pi,rotate=2):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-028.png
+% 1. x*sin(x) adalah fungsi matematika yang digunakan untuk membuat
+% grafik 3D.
+%% 2. a=0,b=6pi mengatur rentang sumbu x yang akan ditampilkan pada
+% grafik.
+%% 3. rotate=2 mengatur grafik agar dapat diputar secara interaktif.
+% 
+% Berikut adalah plot dengan tiga fungsi.
+>plot3d("x","x^2+y^2","y",r=2,zoom=3.5,frame=3):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-029.png
+% 1. x adalah fungsi matematika yang digunakan untuk menentukan nilai
+% sumbu x pada grafik.
+%% 2. x^2+y^2 adalah fungsi matematika yang digunakan untuk menentukan
+% nilai sumbu z pada grafik.
+%% 3. y adalah fungsi matematika yang digunakan untuk menentukan nilai
+% sumbu y pada grafik.
+%% 4. r=2 mengatur jarak maksimum dari pusat grafik ke tepi grafik.
+%% 5. zoom=3.5 mengatur faktor perbesaran grafik.
+%% 6. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.
+>
+% * 3. Menggambar Grafik Fungsi Dua Variabel yang 
+% * Fungsinya Didefinisikan sebagai Fungsi Numerik
+% 
+% ** Fungsi Dua Variabel
+% 
+% Fungsi dua variabel adalah sebuah fungsi yang bernilai real dari dua
+% variabel real. Fungsi ini memadankan setiap pasangan terurut (x,y)
+% pada suatu himpunan D dari bidang dengan bilangan real tunggal f(x,y).
+% Dalam matematika, fungsi dua variabel atau lebih digunakan untuk
+% menggambarkan hubungan antara dua atau lebih variabel.
+% 
+% ** Fungsi Numerik
+% 
+% Fungsi numerik adalah suatu fungsi matematika yang menghasilkan nilai
+% numerik sebagai output-nya. Fungsi ini dapat dinyatakan dalam bentuk
+% persamaan matematika atau algoritma komputasi.
+% 
+% Contoh:
+% 
+% Fungsi
+%% latex: f(x,y) = 5x+y
+% 
+% Misal input nilai x=2 dan y=3, maka akan dihasilkan nilai z yaitu
+% 
+% latex: z = f(x,y) = 5(2)+3 = 10+3 = 13
+% 
+% ** Gambar Grafik Fungsi
+% 
+% Fungsi satu baris numerik didefinisikan oleh ":=".
+% 
+% Langkah-langkah untuk memvisualisasikan grafik fungsi dua variabel
+% yang fungsi nya didefinisikan sebagai fungsi numerik dalam plot3d:
+% 
+% 1. Buat fungsi numerik yang akan digunakan untuk memvisualisasikan
+% data.
+%% function f(x,y):=ax+by
+%% dimana a dan b adalah konstanta
+% 
+% 2. Gunakan fungsi plot3d() untuk membuat grafik tiga dimensi dari
+% fungsi numerik.
+%% plot3d("f"):
+% 
+% ** Contoh
+% 
+% Fungsi matematika f(x,y) dapat digambarkan dalam bentuk grafik tiga
+% dimensi menggunakan perintah plot3d. Berikut adalah contoh penggunaan
+% perintah plot3d untuk menggambarkan fungsi tersebut:
+% 
+% 1. Fungsi Linear Dua Variabel
+% 
+% latex: f(x,y)=5x+3y+1
+>function f(x,y):= 5*x+3*y+1
+>plot3d("f"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-030.png
+% - Fungsi f(x,y) didefinisikan sebagai 5x+3y+1.
+%% - Perintah "plot3d("f")" digunakan untuk memplot grafik 3D dari fungsi
+% f(x,y) menggunakan fungsi plot3d di EMT.
+%% - Grafik yang dihasilkan akan menampilkan fungsi dalam tiga dimensi,
+% dengan sumbu x dan y mewakili variabel masukan dan sumbu z mewakili
+% nilai keluaran fungsi. Grafik akan menunjukkan bentuk fungsi dan
+% perubahannya seiring dengan perubahan variabel masukan.
+% 
+% ---
+% 
+% 2. Fungsi Kuadrat Dua Variabel
+% 
+% latex: f(x,y)=x^2+3y^2+21
+>function f(x,y):= x^2+(3*y)^2+27
+>plot3d("f"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-031.png
+% - Perintah "function f(x,y):= x^2+(3*y)^2+27" berarti mendefinisikan
+% fungsi matematika f(x,y) sebagai x pangkat 2 ditambah 3 kali y pangkat
+% 2 ditambah 27.
+%% - Perintah "plot3d("f")" berarti membuat grafik tiga dimensi dari
+% fungsi f(x,y) yang telah didefinisikan sebelumnya.
+% 
+% ---
+% 
+% 3. Fungsi Logaritma Dua Variabel
+% 
+% latex: f(x,y)= \log(2xy)
+>function f(x,y):= log((2*x)*y)
+>plot3d("f"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-032.png
+% - Input yang diberikan adalah fungsi matematika dua variabel, f(x,y),
+% yang didefinisikan sebagai logaritma hasil kali 2x dan y.
+%% - Perintah "plot3d("f")" digunakan untuk memplot grafik fungsi f(x,y)
+% dalam ruang tiga dimensi.
+% 
+% ---
+% 
+% 4. Fungsi Eksponen Dua Variabel
+% 
+% latex: f(x,y)=x^{5y+10}
+>function f(x,y):= x^(5*y+10)
+>plot3d("f"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-033.png
+% - Perintah `fungsi f(x,y):= x^(5y+10)` adalah fungsi matematika dua
+% variabel `x` dan `y` dan dengan rumus x^(5y+10)
+%% - Perintah `plot3d("f")` digunakan untuk memplot fungsi dalam ruang
+% tiga dimensi. Plot yang dihasilkan akan menampilkan nilai fungsi
+% sebagai permukaan pada bidang x-y, dengan tinggi permukaan mewakili
+% nilai fungsi pada titik tersebut.
+% 
+% ---
+% 
+% 5. Fungsi Trigonometri Dua Variabel
+% 
+% latex: f(x,y)=cos(x)+sin(y)
+>function f(x,y):= cos(x)*sin(y)
+>plot3d("f"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-034.png
+% - Perintah "function f(x,y):= cos(x)*sin(y)" adalah perintah untuk
+% mendefinisikan fungsi matematika f(x,y) yang menghasilkan nilai
+% cosinus dari x dikalikan dengan sinus dari y.
+%% - Perintah "plot3d("f")" adalah perintah untuk membuat grafik tiga
+% dimensi dari fungsi f(x,y) yang telah didefinisikan sebelumnya.
+% 
+% 
+% 
+% * 4. Menggambar Grafik Fungsi Dua Variabel yang
+% * Fungsinya Didefinisikan sebagai Fungsi Simbolik
+% 
+% ** Fungsi Simbolik
+% 
+% Fungsi simbolik adalah fungsi yang dinyatakan dengan menggunakan
+% simbol-simbol matematika, seperti huruf dan operasi matematika,
+% daripada menggunakan angka konkret atau ekspresi numerik. Fungsi
+% simbolik sering digunakan untuk menggambarkan hubungan antara
+% variabel-variabel matematika dalam bentuk yang lebih umum dan abstrak.
+% 
+% Contoh fungsi simbolik yang umum adalah:
+% 
+% latex: g(x,y) = 2x + y
+% 
+% Dalam contoh di atas, g(x) adalah fungsi simbolik yang mengaitkan
+% setiap nilai x dengan hasil dari ekspresi matematika 2x + 3. Fungsi
+% ini dapat digunakan untuk menghitung nilai fungsi untuk berbagai nilai
+% x.
+% 
+% ** Perbedaan Fungsi Numerik dan Fungsi Simbolik
+% 
+% 1. Fungsi Numerik
+%% Fungsi numerik dinyatakan dalam bentuk yang lebih konkret menggunakan
+% angka-angka nyata.
+% 
+% Contoh fungsi numerik adalah
+% 
+% latex: g(x,y) = 2x + y + 3
+% 
+% dimana kita memberikan nilai numerik kepada "x dan y"
+%% misalnya, x = 5 dan y = 2, maka hasilnya adalah angka konkret yaitu
+% g(5,2) = 15
+% 
+% 2. Fungsi Simbolik
+%% Fungsi simbolik dinyatakan menggunakan simbol-simbol matematika
+% seperti huruf (variabel) dan operasi matematika.
+% 
+% Contoh fungsi simbolik adalah
+% 
+% latex: g(x,y) = 2x + y + 3
+% 
+% "g" adalah simbol fungsi
+%% "x,y" adalah variabel,
+%% 2x + 3 adalah ekspresi matematika yang menggambarkan hubungan antara
+% "x,y" dan hasil fungsi.
+% 
+% ** Gambar Grafik Fungsi
+% 
+% Fungsi satu baris simbolik didefinisikan oleh "&=".
+% 
+% Langkah-langkah untuk memvisualisasikan grafik fungsi dua variabel
+% yang fungsi nya didefinisikan sebagai fungsi simbolik dalam plot3d:
+% 
+% 1. Buat fungsi simbolik yang akan digunakan untuk memvisualisasikan
+% data.
+%% function g(x,y)&= ax+by;
+%% dimana a dan b adalah konstanta
+% 
+% 2. Gunakan fungsi plot3d() untuk membuat grafik tiga dimensi dari
+% fungsi simbolik
+%% plot3d("g"):
+% 
+% 3. Menentukan rentang variabel
+%% misal
+%% plot3d("g(x,y)",-10,10,-5,5):
+%% dengan batasan x dari -10 hingga 10 dan batasan y dari -5 hingga 5
+% 
+% ** Contoh
+% 
+% 1. Fungsi Linear Dua Variabel
+% 
+% latex: g(x,y)=x-2y+6
+% 
+>function g(x,y)&= x-2*y+6;
+>plot3d("g(x,y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-035.png
+% - Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+% x dan y, dan menghasilkan sebuah nilai berdasarkan rumus x - 2y + 6.
+%% - Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+% dari fungsi tersebut.
+>plot3d("g(x,y)",-1,2,0,2*pi):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-036.png
+% - Perintah "plot3d("g(x,y)",-1,2,0,2*pi)" adalah perintah untuk
+% menggambar grafik fungsi tiga dimensi "g(x,y)" pada rentang x dari -1
+% hingga 2 dan rentang y dari 0 hingga 2pi.
+% 
+% ---
+% 
+% 2. Fungsi Kuadrat Dua Variabel
+% 
+% latex: g(x,y)=x^2+y^2+5
+>function g(x,y)&= x^2+y^2+5;
+>plot3d("g(x,y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-037.png
+% - Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+% x dan y, dan menghasilkan sebuah nilai berdasarkan rumus x^2+y^2+5
+%% - Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+% dari fungsi tersebut.
+>plot3d("g(x,y)",-10,10,-1,5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-038.png
+% - Perintah "plot3d("g(x,y)",-10,10,-1,5)" adalah perintah untuk
+% menggambar grafik fungsi tiga dimensi g(x,y) pada rentang x dari -10
+% hingga 10 dan rentang y dari -1 hingga 5
+% 
+% ---
+% 
+% 3. Fungsi Logaritma Dua Variabel
+% 
+% latex: g(x,y) = \log(xy5)
+>function g(x,y)&= log(x*y*5);
+>plot3d("g(x,y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-039.png
+% - Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+% x dan y, dan menghasilkan sebuah nilai berdasarkan rumus logaritma x
+% dikalikan y dikalikan 5
+%% - Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+% dari fungsi tersebut.
+>plot3d("g(x,y)",-1,1,-5,5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-040.png
+% - Perintah "plot3d("g(x,y)",-1,1,-5,5)" adalah perintah untuk
+% menggambar grafik fungsi tiga dimensi g(x,y) pada rentang x dari -1
+% hingga 1 dan rentang y dari -5 hingga 5
+>plot3d("g(x,y)",-1,1,-5,5,zoom=4.5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-041.png
+% - plot3d: perintah untuk membuat grafik 3D.
+%% - "g(x,y)": fungsi matematika yang akan digunakan untuk membuat
+% grafik.
+%% - -1,1: rentang nilai variabel x yang akan digunakan dalam grafik.
+%% - -5,5: rentang nilai variabel y yang akan digunakan dalam grafik.
+%% - zoom=4.5: perintah untuk memperbesar tampilan grafik dengan faktor
+% 4.5.
+% 
+% ---
+% 
+% 4. Fungsi Eksponen Dua Variabel
+% 
+% latex: g(x,y) = 2^{xy5}
+>function g(x,y)&= 2^(x*y*5);
+>plot3d("g(x,y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-042.png
+% - Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+% x dan y, dan menghasilkan sebuah nilai berdasarkan rumus 2^(xy5)
+%% - Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+% dari fungsi tersebut.
+>plot3d("g(x,y)",-1,5,-1,3,frame=3,zoom=3):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-043.png
+% - Peintah plot3d("g(x,y)",-1,5,-1,3,frame=3,zoom=3) adalah perintah
+% untuk membuat plot tiga dimensi dari fungsi `g(x,y)` dengan batas `x`
+% dari `-1` hingga `5` dan batas `y` dari `-1` hingga `3`.
+% 
+% - plot3d: perintah untuk membuat plot tiga dimensi.
+%% - "g(x,y)"`: fungsi yang akan diplot.
+%% - (-1,5): batas `x` dari `-1` hingga `5`.
+%% - (-1,3): batas `y` dari `-1` hingga `3`.
+%% - frame=3: menampilkan frame nomor 3.
+%% - zoom=3: memperbesar tampilan plot sebanyak 3 kali.
+% 
+% ---
+% 
+% 5. Fungsi Trigonometri Dua Variabel
+% 
+% latex: g(x,y)=tan(x) - cot(y)
+>function g(x,y)&= tan(x)-cos(y);
+>plot3d("g(x,y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-044.png
+% - Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+% x dan y, dan menghasilkan sebuah nilai berdasarkan rumus tan(x)-cos(y)
+%% - Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+% dari fungsi tersebut.
+>plot3d("g(x,y)",-1,3,0,2*pi,frame=1,zoom=3.5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-045.png
+% - Peintah plot3d("g(x,y)",-1,3,0,2*pi,frame=5,zoom=3) adalah perintah
+% untuk membuat plot tiga dimensi dari fungsi `g(x,y)` dengan batas `x`
+% dari `-1` hingga `3` dan batas `y` dari `0` hingga `2pi`.
+% 
+% - plot3d: perintah untuk membuat plot tiga dimensi.
+%% - "g(x,y)"`: fungsi yang akan diplot.
+%% - (-1,3): batas `x` dari `-1` hingga `3`.
+%% - (0,2pi): batas `y` dari `0` hingga `2pi`.
+%% - frame=1: menampilkan frame nomor 1.
+%% - zoom=3.5: memperbesar tampilan plot sebanyak 3.5 kali.
+% 
+% ---
+% 
+% 6. Fungsi Akar Kuadrat
+% 
+% latex: P(x,y)= \sqrt{10x^2+2y^2}
+>function P(x,y) &= sqrt(10*x^2+2*y^2);
+>plot3d("P(x,y)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-046.png
+% - Fungsi P(x,y) adalah fungsi matematika yang mengambil dua variabel,
+% x dan y, dan menghasilkan sebuah nilai berdasarkan rumus akar kuadrat
+% dari 10x^2+2y^2
+%% - Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+% dari fungsi tersebut.
+>plot3d("P(x,y)",-2,2,0,3*pi,frame=5,zoom=2,scale=1):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-047.png
+% - P(x,y): Merupakan fungsi yang akan digambarkan dalam grafik tiga
+% dimensi.
+%% - (-2,2): Merupakan rentang nilai dari sumbu x yang akan digunakan
+% dalam grafik.
+%% - (0,3pi): Merupakan rentang nilai dari sumbu y yang akan digunakan
+% dalam grafik. Nilai pi dikalikan dengan 3 agar rentang nilai y
+% mencakup tiga putaran lingkaran penuh.
+%% - frame=5: Menentukan nomor bingkai (frame) yang akan digunakan dalam
+% animasi grafik.
+%% - zoom=2: Menentukan faktor pembesaran grafik. Dengan memperbesar
+% tampilan, kita dapat melihat detail yang lebih kecil pada plot.
+%% - scale=1: Menentukan skala grafik. Dengan mengatur skala, kita dapat
+% mengubah jarak antara titik-titik pada sumbu tersebut.
+>
+% * 5. Menggambar Data $x$, $y$, $z$
+% * pada ruang Tiga Dimensi (3D)
+% 
+% Definisi
+% 
+%   Menggambar data pada ruang tiga dimensi (3D) adalah proses
+% visualisasi data yang mengubah informasi dalam tiga dimensi, yaitu
+% panjang, lebar, dan tinggi, menjadi representasi visual yang dapat
+% dipahami dan dianalisis.
+% 
+% Tujuan:
+% 
+%   Tujuan dari menggambar data 3D adalah untuk membantu pemahaman dan
+% interpretasi data yang lebih baik, terutama ketika data tersebut
+% memiliki komponen yang tidak dapat direpresentasikan dengan baik dalam
+% dua dimensi.
+% 
+% Sama seperti plot2d, plot3d menerima data. Untuk objek 3D, Anda perlu
+% menyediakan matriks nilai x-, y- dan z, atau tiga fungsi atau ekspresi
+% fx(x,y), fy(x,y), fz(x,y).
+% 
+% latex: \gamma(t,s) = (x(t,s),y(t,s),z(t,s))
+% %image% Vikram Zaky Ardianto_22305144028_Plot 3D-048.png
+% // latex: \gamma(t,s) = (x(t,s),y(t,s),z(t,s))
+% 
+% Karena x,y,z adalah matriks, kita asumsikan bahwa (t,s) melalui sebuah
+% kotak persegi. Hasilnya, Anda dapat memplot gambar persegi panjang di
+% ruang angkasa.
+% 
+% Kita dapat menggunakan bahasa matriks Euler untuk menghasilkan
+% koordinat secara efektif.
+% 
+% Dalam contoh berikut, kami menggunakan vektor nilai t dan vektor kolom
+% nilai s untuk membuat parameter permukaan bola. Dalam gambar kita
+% dapat menandai daerah, dalam kasus kita daerah kutub.
+% 
+% ** Contoh 1
+>t=-1:0.1:1; s=(-1:0.1:1)'; plot3d(t,s,t*s,grid=10):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-049.png
+% Baris pertama kode "t=-1:0.1:1" membuat vektor baris t yang berisi
+% nilai dari -1 hingga 1 dengan interval 0.1. Baris kedua
+% "s=(-1:0.1:1)'" membuat vektor kolom s yang berisi nilai dari -1
+% hingga 1 dengan interval 0.1. Operator transpose ' digunakan untuk
+% mengubah vektor baris t menjadi vektor kolom.
+%% Baris ketiga "plot3d(t,s,ts,grid=10)" membuat plot tiga dimensi dari
+% fungsi f(x,y) = xy pada domain [-1,1] x [-1,1]. Plot dibuat
+% menggunakan fungsi plot3d, yang mengambil tiga argumen: koordinat x,
+% y, dan z dari titik-titik yang akan diplot. Dalam hal ini, koordinat x
+% diberikan oleh vektor t, koordinat y diberikan oleh vektor s, dan
+% koordinat z diberikan oleh hasil perkalian t dan s, yaitu ts.
+% Parameter grid diatur menjadi 10, yang menunjukkan jumlah garis grid
+% yang akan ditampilkan pada plot.
+% 
+% ** Contoh 2
+% 
+% Tentu saja, titik cloud juga dimungkinkan. Untuk memplot data titik
+% dalam ruang, kita membutuhkan tiga vektor untuk koordinat titik-titik
+% tersebut.
+% 
+% Gayanya sama seperti di plot2d dengan points=true;
+>n=500;...
+>plot3d(normal(1,n),normal(1,n),normal(1,n),points=true,style="."):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-050.png
+% Kode "n=500;
+% plot3d(normal(1,n),normal(1,n),normal(1,n),points=true,style=".")"
+% digunakan untuk membuat plot tiga dimensi dari tiga vektor normal yang
+% dihasilkan secara acak dengan menggunakan fungsi "normal()" pada Euler
+% Math Toolbox (EMT). Parameter "n=500" menunjukkan bahwa setiap vektor
+% normal memiliki 500 elemen. Parameter "points=true" digunakan untuk
+% menampilkan titik-titik pada plot, sedangkan parameter "style='.'"
+% digunakan untuk mengatur gaya titik pada plot menjadi titik bulat.
+% 
+% ** Contoh 3
+% 
+%  Dengan lebih banyak usaha, kami dapat menghasilkan banyak permukaan.
+% 
+%  Dalam contoh berikut, kita membuat tampilan bayangan dari bola yang
+% terdistorsi. Koordinat biasa untuk bola adalah
+% 
+% latex: \gamma(t,s) = (\cos(t)\cos(s),\sin(t)\sin(s),\cos(s))
+% 
+% dengan
+% 
+% latex: 0 \le t \le 2\pi, \quad \frac{-\pi}{2} \le s \le \frac{\pi}{2}.
+% 
+% Kami mendistorsi ini dengan sebuah faktor
+% 
+% latex: d(t,s) = \frac{\cos(4t)+\cos(8s)}{4}
+>t=linspace(0,2pi,320); s=linspace(-pi/2,pi/2,160)';...
+>d=1+0.2*(cos(4*t)+cos(8*s));...
+>plot3d(cos(t)*cos(s)*d,sin(t)*cos(s)*d,sin(s)*d,hue=1,...
+>light=[1,0,1],frame=0,zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-051.png
+% Kode ini terdiri dari beberapa baris. Baris pertama
+% "t=linspace(0,2pi,320)" membuat vektor t yang berisi 320 nilai yang
+% sama terdistribusi secara merata antara 0 dan 2p. Baris kedua
+% "s=linspace(-pi/2,pi/2,160)'" membuat vektor s yang berisi 160 nilai
+% yang sama terdistribusi secara merata antara -p/2 dan p/2. Operator
+% transpose ' digunakan untuk mengubah vektor baris s menjadi vektor
+% kolom.
+% 
+% Baris ketiga "d=1+0.2*(cos(4t)+cos(8s))" membuat vektor d yang berisi
+% nilai dari 1 + 0.2 * (cos(4t) + cos(8s)). Baris keempat
+% "plot3d(cos(t)*cos(s)*d,sin(t)*cos(s)*d,sin(s)*d,hue=1,light=[1,0,1],frame=0,zoom=5)"
+% membuat plot tiga dimensi dari fungsi f(x,y) = 2x^2 + y^3. Plot dibuat
+% menggunakan fungsi plot3d, yang mengambil empat argumen: koordinat x,
+% y, dan z dari titik-titik yang akan diplot, serta beberapa parameter
+% lainnya. Dalam hal ini, koordinat x diberikan oleh ekspresi
+% cos(t)*cos(s)*d, koordinat y diberikan oleh ekspresi sin(t)*cos(s)*d,
+% dan koordinat z diberikan oleh ekspresi sin(s)*d. Parameter "hue=1"
+% digunakan untuk mengatur warna pada plot berdasarkan nilai fungsinya.
+% Parameter "light=[1,0,1]" digunakan untuk mengatur pencahayaan pada
+% plot. Parameter "frame=0" digunakan untuk menghilangkan frame pada
+% plot. Parameter "zoom=5" digunakan untuk mengatur level zoom pada
+% plot.
+>
+>
+>
+>
+>
+>
+>
+% * 6. Grafik Tiga Dimensi yang
+% * Bersifat Interaktif dan animasi grafik 3D
+>
+% Membuat gambar grafik tiga dimensi (3D) yang bersifat interaktif dan
+% animasi grafik 3D adalah proses menciptakan visualisasi tiga dimensi
+% yang memungkinkan pengguna berinteraksi dengan objek-objek 3D.
+% Interaktivitas dalam gambar 3D memungkinkan pengguna untuk melakukan
+% tindakan seperti mengubah sudut pandang, memindahkan objek, atau
+% berinteraksi dengan elemen-elemen dalam adegan 3D. Animasi grafik 3D
+% dapat mencakup pergerakan, tetapi juga dapat berarti perubahan dalam
+% tampilan atau atribut objek tanpa pergerakan fisik yang mencolok.
+% 
+% CONTOH GAMBAR
+>function testplot () := plot3d("x^2+y^3"); ...
+>rotate("testplot"); testplot(): 
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-052.png
+>function testplot () := plot3d("x^2+y",distance=3,zoom=1,angle=pi/2,height=0); ...
+>rotate("testplot"); testplot(): 
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-053.png
+% Hilangkan command angle untuk bisa merotasikan grafik,dan height = 0
+% untuk membuat posisi sejajar dengan mata jadi tidak mempengaruhi
+% pergerakan hanya berbeda sudut pandang saja
+>
+>plot3d("exp(-x^2+y^2)",>user, ...
+>  title="Turn with the vector keys (press return to finish)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-054.png
+>plot3d("exp(x^2+y^2)",>user, ...
+>title="Coba gerakan)")
+% Interaksi pengguna dimungkinkan dengan parameter. Pengguna dapat
+% menekan tombol berikut.
+%% 1. kiri, kanan, atas, bawah: memutar sudut pandang
+%% 2. +,-: memperbesar atau memperkecil
+%% 3. a: menghasilkan anaglyph (lihat di bawah)
+%% 4. l: beralih memutar sumber cahaya (lihat di bawah)
+%% 5. spasi: disetel ulang ke default
+%% 6. enter: akhiri interaksi
+>
+>plot3d("exp(-(x^2+y^2)/5)",r=10,n=80,fscale=4,scale=1.2,frame=3,>user):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-055.png
+% Parameter "r=10" menunjukkan jari-jari bola yang digunakan untuk
+% membuat plot tiga dimensi. Dalam hal ini, jari-jari bola yang
+% digunakan adalah 10.
+%% Parameter "n=80" menunjukkan jumlah titik yang digunakan untuk membuat
+% plot. Semakin besar nilai n, semakin banyak titik yang digunakan untuk
+% membuat plot, sehingga plot akan menjadi lebih halus dan akurat.
+%% Parameter "fscale=4" menunjukkan faktor skala pada sumbu z. Dalam hal
+% ini, faktor skala pada sumbu z adalah 4.
+%% Parameter "scale=1.2" menunjukkan faktor skala pada plot. Semakin
+% besar nilai scale, semakin besar ukuran plot yang dihasilkan.
+%% Parameter "frame=3" menunjukkan jenis frame yang digunakan pada plot.
+% Dalam hal ini, jenis frame yang digunakan adalah frame kotak dengan
+% sumbu x, y, dan z yang ditampilkan.
+>plot3d("x^2+y",distance=3,zoom=1,angle=pi/2,height=0):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-056.png
+% Tampilan dapat diubah dengan berbagai cara.
+% 
+% - distance: jarak pandang ke plot.
+%% - zoom: nilai zoom.
+%% - angle: sudut terhadap sumbu y negatif dalam radian.
+%% - height: ketinggian tampilan dalam radian.
+>plot3d("x^4+y^2",a=0,b=1,c=-1,d=1, angle=-20?, height=20?, ...
+>  center=[0.4,0,0], zoom=5):
+Closing bracket missing in function call!
+Error in:
+plot3d("x^4+y^2",a=0,b=1,c=-1,d=1, angle=-20?, height=20?,   c ...
+                                            ^
+% Plot selalu terlihat berada di tengah kubus plot. Anda dapat
+% memindahkan bagian tengah dengan parameter center.
+% 
+% Parameter center digunakan untuk memindahkan pusat plot ke lokasi
+% tertentu dalam ruang. Dalam hal ini, pusat plot diatur ke titik (0.4,
+% 0, 0) dalam ruang tiga dimensi. Parameter center berguna ketika kita
+% ingin mengubah sudut pandang plot atau ketika kita ingin menyelaraskan
+% plot dengan objek lain dalam scene. Dengan menentukan pusat plot, kita
+% dapat mengontrol posisi kamera dan arah tampilan plot.
+% 
+% Ada beberapa parameter untuk menskalakan fungsi atau mengubah tampilan
+% grafik.
+% 
+% fscale: menskalakan ke nilai fungsi (defaultnya adalah <fscale).
+%% scale: angka atau vektor 1x2 untuk diskalakan ke arah x dan y.
+%% frame: jenis bingkai (default 1).
+>function testplot () := plot3d("5*exp(-x^2-y^2)",r=2,<fscale,<scale,distance=13,height=50?, ...
+>center=[0,0,-2],frame=3); ...
+>rotate("testplot"); testplot():
+Closing bracket missing in function call!
+testplot:
+    useglobal; return plot3d("5*exp(-x^2-y^2)",r=2,<fscale,<scale ...
+Try "trace errors" to inspect local variables after errors.
+rotate:
+    f$(args());
+>plot3d("x^2+1",a=-1,b=1,rotate=true,grid=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-057.png
+% Penjelasan:
+%% Secara umum, parameter "a" dan "b" digunakan untuk menentukan rentang
+% nilai variabel independen dalam suatu fungsi. Dalam kasus ini, "a=-1"
+% dan "b=1" menunjukkan bahwa fungsi tersebut akan diplot pada interval
+% [-1, 1]. Parameter "rotate=true" menunjukkan bahwa grafik akan diputar
+% untuk memberikan tampilan bentuk tiga dimensi yang lebih baik.
+% Parameter "grid=5" menunjukkan bahwa grid dengan jarak 5 unit akan
+% ditampilkan pada grafik.
+% 
+% Parameter memutar memutar fungsi dalam x di sekitar sumbu x.
+% 
+% - rotate=1: Menggunakan sumbu x
+%% - rotate=2: Menggunakan sumbu z
+>plot3d("x^2+1",a=-1,b=1,rotate=2,grid=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-058.png
+>function testplot () := plot3d("sqrt(25-x^2)",a=0,b=5,rotate=1); ...
+>rotate("testplot"); testplot():
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-059.png
+>function testplot () := plot3d("x^4+y^2",a=0,b=1,c=-1,d=1,height=20?, ...
+>center=[0.4,0,0],zoom=5); ...
+>rotate("testplot"); testplot():
+Closing bracket missing in function call!
+testplot:
+    useglobal; return plot3d("x^4+y^2",a=0,b=1,c=-1,d=1,height=20 ...
+Try "trace errors" to inspect local variables after errors.
+rotate:
+    f$(args());
+>function testplot () := plot3d("1/(x^2+y^2+1)",r=5,>polar, ...
+>fscale=2,>hue,n=100,zoom=4,>contour,color=red); ...
+>rotate("testplot"); testplot():
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-060.png
+% Parameter "r=5" menunjukkan jari-jari bola yang digunakan untuk
+% membuat plot tiga dimensi. Dalam hal ini, jari-jari bola yang
+% digunakan adalah 5.
+%% Parameter ">polar" menunjukkan bahwa plot yang dibuat adalah plot
+% polar tiga dimensi. Plot polar adalah plot yang dibuat dengan
+% menggunakan koordinat polar, yaitu koordinat yang terdiri dari jarak
+% dan sudut.
+%% Parameter "fscale=2" menunjukkan faktor skala pada sumbu z. Dalam hal
+% ini, faktor skala pada sumbu z adalah 2.
+%% Parameter ">hue" menunjukkan bahwa warna pada plot akan diatur
+% berdasarkan nilai fungsinya. Semakin tinggi nilai fungsinya, semakin
+% terang warnanya.
+%% Parameter "n=100" menunjukkan jumlah titik yang digunakan untuk
+% membuat plot. Semakin besar nilai n, semakin banyak titik yang
+% digunakan untuk membuat plot, sehingga plot akan menjadi lebih halus
+% dan akurat.
+%% Parameter "zoom=4" menunjukkan level zoom pada plot.
+%% Parameter ">contour" menunjukkan bahwa garis kontur akan ditampilkan
+% pada plot.
+%% Parameter "color=blue" menunjukkan warna garis kontur pada plot. Dalam
+% hal ini, warna yang digunakan adalah biru.
+% 
+% Untuk plotnya, Euler menambahkan garis grid. Sebaliknya dimungkinkan
+% untuk menggunakan garis level dan satu warna atau warna spektral.
+% Euler dapat menggambar ketinggian fungsi pada sebuah plot dengan
+% bayangan. Di semua plot 3D, Euler dapat menghasilkan anaglyph
+% merah/cyan.
+% 
+% -hue: Mengaktifkan bayangan cahaya, bukan kabel.
+%% -contour: Membuat plot garis kontur otomatis pada plot.
+%% -level=... (atau level): Vektor nilai garis kontur.
+>function testplot () := plot3d("x^2-y^2",0,5,0,5,level=-1:0.1:1,color=blue); ...
+>rotate("testplot"); testplot():
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-061.png
+% Parameter "level=-1:0.1:1" menunjukkan rentang nilai fungsinya yang
+% akan ditampilkan pada plot. Dalam hal ini, rentang nilai fungsinya
+% adalah dari -1 hingga 1 dengan interval 0.1.
+>function testplot () := plot3d("x^2+y^4",>cp,cpcolor=green,cpdelta=0.2); ...
+>rotate("testplot"); testplot():
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-062.png
+% Parameter ">cp" menunjukkan bahwa titik kontrol akan ditambahkan pada
+% plot. Titik kontrol digunakan untuk menentukan bentuk dan posisi plot
+% tiga dimensi.
+%% Parameter "cpcolor=green" menunjukkan warna titik kontrol yang akan
+% digunakan. Dalam hal ini, warna yang digunakan adalah hijau.
+%% Parameter "cpdelta=0.2" menunjukkan jarak antara titik kontrol.
+% Semakin kecil nilai cpdelta, semakin banyak titik kontrol yang akan
+% ditambahkan pada plot.
+>
+>plot3d("-x^2-y^2", ...
+>hue=true,light=[0,1,1],amb=0,user=true, ...
+> title="Press l and cursor keys (return to exit)"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-063.png
+% parameter "hue=true" menunjukkan bahwa warna pada plot akan diatur
+% berdasarkan nilai fungsinya. Semakin tinggi nilai fungsinya, semakin
+% terang warnanya.
+%% Parameter "light=light=[0,1,1] menunjukkan intensitas cahaya pada
+% plot. Nilai light=[0,1,1] menunjukkan bahwa cahaya datang dari arah
+% positif y dan z.
+%% Parameter "amb=0" menunjukkan intensitas cahaya ambient pada plot.
+% Nilai 0 menunjukkan bahwa tidak ada cahaya ambient yang digunakan.
+>function testplot () := plot3d("-x^2-y^2",color=rgb(0.2,0.2,0),hue=true,frame=false, ...
+> zoom=3,contourcolor=red,level=-2:0.1:1,dl=0.01); ...
+>rotate("testplot"); testplot():
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-064.png
+% Parameter "frame=false" digunakan untuk menghilangkan frame pada plot
+% tiga dimensi. Parameter "color=rgb(0.2,0.2,0)" menunjukkan warna dasar
+% plot. Dalam hal ini, warna yang digunakan adalah hitam dengan nilai
+% RGB (0.2, 0.2, 0). Parameter "dl=0.01" menunjukkan jarak antara
+% titik-titik pada plot. Semakin kecil nilai dl, semakin banyak titik
+% yang digunakan untuk membuat plot, sehingga plot akan menjadi lebih
+% halus dan akurat. Namun, semakin kecil nilai dl, semakin lama waktu
+% yang dibutuhkan untuk membuat plot.
+>function testplot () := plot3d("x^2+y^3",>contour,>spectral); ...
+>rotate("testplot"); testplot():
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-065.png
+>function testplot () := plot3d("x^2+y^3", >transparent, grid=10, wirecolor=red); ...
+>rotate("testplot"); testplot():
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-066.png
+>
+% * 7. Fungsi Parametrik 3D
+% 
+% Fungsi parametrik merupakan jenis fungsi matematika yang menggambarkan
+% hubungan antara dua atau lebih variabel, dimana masing-masing
+% koordinat (x, y, z...) dinyatakan sebagai fungsi lain dari beberapa
+% parameter. Fungsi parametrik dapat digunakan untuk menggambar kurva,
+% lintasan, atau hubungan antara berbagai variabel yang bergantung pada
+% parameter-parameter tertentu.
+% 
+% Sebagai contoh :
+>plot3d("cos(x)*cos(y)^3","sin(x)*cos(y)^3","sin(y)", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,3],<frame,...
+>n=90,grid=[20,50],wirecolor=black,zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-067.png
+>plot3d("cos(x)*cos(y)","sin(x)*cos(y)","cos(x)", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,3],<frame,...
+>n=90,grid=[20,50],wirecolor=black,zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-068.png
+>plot3d("cos(x)^3*sin(y)","sin(x)^2*sin(y)","cos(x)^2", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,5],<frame,...
+>n=90,grid=[20,50],wirecolor=black,zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-069.png
+>plot3d("cos(x)^2*cos(y)","sin(x)^2*cos(y)","cos(x)^2", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,5],<frame,...
+>n=90,grid=[10,50],wirecolor=black,zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-070.png
+>plot3d("cos(x)*cos(y)","sin(x)*cos(y)","sin(y)", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,3],<frame,...
+>n=90,grid=[20,50],wirecolor=black,zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-071.png
+% * 8. Menggambar Fungsi Implisit Implisit
+% 
+% Fungsi implisit (implicit function) adalah fungsi yang memuat lebih
+% dari satu variabel, berjenis variabel bebas dan variabel terikat yang
+% berada dalam satu ruas sehingga tidak bisa dipisahkan pada ruas yang
+% berbeda.
+% 
+% latex: F(x,y,z)=0
+% %image% Vikram Zaky Ardianto_22305144028_Plot 3D-072.png
+% // latex: F(x,y,z)=0
+%% (1 persamaan dan 3 variabel), terdiri dari 2 variabel bebas dan 1
+% terikat
+% 
+% Misalnya,
+%% latex: F(x, y, z) = x^2 + y^2 + z^2 = 1
+% %image% Vikram Zaky Ardianto_22305144028_Plot 3D-073.png
+% // latex: F(x, y, z) = x^2 + y^2 + z^2 = 1
+%% adalah persamaan implisit yang menggambarkan bola dengan jari-jari 1
+% dan pusat di (0,0,0).
+% 
+>zplot3d("x^2+y^3+z*y-1", r=5, implicit=3):
+Function zplot3d not found.
+Try list ... to find functions!
+Error in:
+zplot3d("x^2+y^3+z*y-1", r=5, implicit=3): ...
+                                         ^
+>c=1; d=1;
+>plot3d("((x^2+y^2-c^2)^2+(z^2-1)^2)*((y^2+z^2-c^2)^2+(x^2-1)^2)*((z^2+x^2-c^2)^2+(y^2-1)^2)-d", r=2, <frame,>implicit,>user):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-074.png
+>plot3d("x^2+y^2+4*x*z+z^3",>implicit, r=2, zoom=2.5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-075.png
+% Selain plot kontur yang sudah di jelaskan sebelumnya, pada EMT juga
+% ada plot umplisit dalam tiga dimensi. Euler menghasilkan potongan
+% melalui objek. Fitur plot3d termasuk plot implisit. Plot-plot ini
+% menunjukkan himpunan nol dari sebuah fungsi dalam tiga variabel.
+% 
+% Solusi dari
+%% latex: f(x,y,z) = 0
+% 
+% dapat divisualisasikan dalam potongan yang sejajar dengan bidang x-y,
+% bidang x-z, dan bidang y-z.
+% 
+% - implisit = 1: potong sejajar dengan bidang-y-z
+%% - implicit = 2: memotong sejajar dengan bidang x-z
+%% - implicit=4: memotong sejajar dengan bidang x-y
+% 
+% Ambil contoh dari persamaan latex pada fungsi implisit tadi dan
+% tambahkan nilai-nilai ini, sehingga kita dapat memplot persamaan ini
+%% latex: M = {(x,y,z) :{ x^2+y^3+zy=1}}
+>plot3d("x^2+y^3+z*y", r=1, implicit=2):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-076.png
+% Contoh fungsi implisit yang lainnya
+>plot3d("x^3+y^3+z*y-1",r=7,implicit=4):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-077.png
+>plot3d("2*x^2 + 3*y^2 + z^2 - 25",r=8,implicit=2):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-078.png
+>plot3d("x^5 + 5*y^3 + 3*z^2 - 5*x - 7*y - 5*z + 10",r=5,implicit=2):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-079.png
+>plot3d("x^3+y^5+5*x*z+z^3",>implicit,r=3,zoom=2):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-080.png
+>plot3d("x^2+y^2+4*x*z+z^3-5",>implicit,r=2,zoom=2.5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-081.png
+% * 9. Menggambar Titik pada Ruang Tiga Dimensi
+% 
+% Untuk menggambar titik pada ruang tiga dimensi kita memerlukan tiga
+% vektor untuk koordinat titik serta menambahkan parameter points=true.
+% 
+>n=510; ...
+>plot3d(normal(1,n),normal(1,n),normal(1,n),points=true,style="."):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-082.png
+% >n=510; ...
+%% >plot3d(normal(1,n),normal(1,n),normal(1,n),points=true,style="."):
+% 
+% - plot3d() untuk menjalankan perintah membuat plot 3D.
+%% - normal(1,n) sebagai titik koordinat yang akan diplot pada sumbu
+% x,y,z dengan nilai angka dstribusi normal yang dicetak secara random
+% sebanyak n sehingga membentuk matriks 1xn atau 1x500.
+%% - points=true sebagai parameter yang memerintahkan plot3d akan
+% menampilkan points(titik-titik).
+% 
+>n=30; ...
+>plot3d(normal(1,n),normal(1,n),normal(1,n),points=true,style="*"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-083.png
+% 1. n = 30; Ini adalah pernyataan untuk menginisialisasi variabel n
+% dengan nilai 30. Variabel ini kemungkinan akan digunakan untuk
+% menentukan jumlah titik yang akan digunakan dalam plot.
+% 
+% 2. normal(1, n): Fungsi normal digunakan untuk menghasilkan
+% nilai-nilai acak yang terdistribusi secara normal (disebut juga
+% Gaussian) dengan rata-rata 1 dan deviasi standar 1. Ini berarti Anda
+% akan mendapatkan n nilai acak yang terdistribusi secara normal dengan
+% rata-rata 1 dan deviasi standar 1. Anda melakukan ini untuk
+% mendapatkan koordinat x, y, dan z untuk plot 3D.
+% 
+% 3. plot3d(...): Ini adalah fungsi yang digunakan untuk membuat plot 3D
+% dengan parameter-parameter berikut:
+% 
+%  -normal(1, n): Ini adalah data koordinat x, y, dan z yang telah
+% dihasilkan sebelumnya.
+%%  -points = true: Ini mengatur agar titik-titik data ditampilkan dalam
+% plot.
+%%  -style = "*": Ini mengatur gaya plot menjadi tanda bintang (*).
+>x=[1,2,3,4]; y=[4,5,6,1]; z=[6,1,2,3];
+>plot3d(x,y,z,points=true,style="."):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-084.png
+% >x=[1,2,3,4]; y=[4,5,6,1]; z=[6,1,2,3];
+%% >plot3d(x,y,z,points=true,style="."):
+% 
+% - plot3d() untuk menjalankan perintah membuat plot 3D.
+%% - Titik koordinat yang akan diplot pada sumbu x,y,z telah
+% didefinisikan oleh vektor baris x,y,z sebelumnya.
+%% - points=true sebagai parameter yang memerintahkan plot3d akan
+% menampilkan points(titik-titik).
+% 
+>x=[1,1,0,-4,4]; y=[2,-11,7,1,9]; z=[0,8,4,7,7];
+>plot3d(x,y,z,points=true,zoom=3,style="/"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-085.png
+% 1.x, y, dan z: Ini adalah tiga vektor yang berisi koordinat
+% titik-titik dalam tiga dimensi. Dalam contoh ini, x berisi [1, 1, 0,
+% -4, 4], y berisi [2, -11, 7, 1, 9], dan z berisi [0, 8, 4, 7, 7].
+% Setiap elemen dalam vektor-vektor ini mewakili koordinat satu titik
+% dalam ruang 3D.
+% 
+% 2.plot3d(...): Ini adalah fungsi yang digunakan untuk membuat plot 3D
+% dengan parameter-parameter berikut:
+% 
+% -.x, y, dan z: Ini adalah data koordinat yang akan digunakan untuk
+% membuat plot.
+%% -points = true: Ini mengatur agar titik-titik data ditampilkan dalam
+% plot. Dengan points = true, Anda akan melihat titik-titik yang
+% mewakili koordinat data.
+%% -zoom = 3: Ini mengatur tingkat zoom plot. Dengan zoom = 3, plot akan
+% diperbesar sebanyak tiga kali dari ukuran defaultnya.
+%% -style = "/": Ini mengatur gaya plot menjadi tanda garis miring ("/").
+>a=random(1,5); b=linspace(10,18,4); c=normal(1,5); ...
+>plot3d(a,b,c,scale=[5,1,3],points=true,style="'"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-086.png
+% >a=random(1,5); b=linspace(10,18,4); c=normal(1,5); ...
+%%  plot3d(a,b,c,scale=[5,1,3],points=true,style="'"):
+% 
+% - plot3d() untuk menjalankan perintah membuat plot 3D.
+%% - Titik koordinat yang akan diplot pada sumbu x,y,z didefinisikan oleh
+% x=a=random(1,5) yaitu bilangan acak dari 0-1 sebanyak 5 bilangan,
+% y=b=linspace(10,18,4) yaitu bilangan dari 10 hingga 18 dengan selisih
+% yang sama sebanyak 5 bilangan, z=c=normal(1,5) yaitu bilangan acak
+% distribusi normal sebanyak 5 bilangan.
+%% - points=true sebagai parameter yang memerintahkan plot3d akan
+% menampilkan points(titik-titik).
+>//
+>//
+>//
+% 
+% * 10. Mengatur Tampilan, Warna dan 
+% * Angle Gambar Permukaan 3D
+% 
+% Dalam plot3d terdapat banyak function terkait tampilan gambar 3D, di
+% antaranya:
+% 
+% sliced:
+%%   Memplot versi irisan (0=tidak, 1=arah-x, 2=arah-y).
+%% hue :
+%%   Menghitung bayangan menggunakan sumber cahaya.
+%% light, amb, max :
+%%   Mengontrol pengaturan bayangan titik cahaya, ambient dan maksimum.
+%% contour  :
+%%   Menampilkan garis level tebal (dengan level otomatis).
+%% spectral:
+%%   Gunakan warna spektral alih-alih rona monokrom. Terdapat
+%%   skema spektral dari spektral = 1 (> spektral) hingga spektral = 9.
+%%   >Default >spectral adalah rona warna dan ini setara dengan
+%%   color=-2 hingga color=-10.
+%% xhue, yhue, zhue:
+%%   Gunakan koordinat ini sebagai pengganti sumber cahaya.
+%% hues :
+%%   Matriks nilai rona dari 0 sampai 1 untuk bayangan untuk plot x-y-z.
+%%   Matriks harus memiliki ukuran yang kompatibel dengan x, y, z.
+%% contourcolor :
+%%   Warna garis kontur.
+%% contourwidth :
+%%   Lebar garis kontur.
+%% fillcolor :
+%%   Warna isian untuk permukaan 3d tanpa rona.
+%% user :
+%%   Pengguna dapat memutar plot dengan keyboard kiri, kanan, atas,
+%%   bawah. +,- memperbesar plot. Spasi mengatur ulang plot. Return
+%%   mengakhiri interaksi pengguna. Tombol a menghasilkan plot anaglyph.
+%%   Tombol l mengalihkan pergerakan sumber cahaya untuk plot rona.
+%%   Tombol c menggerakkan plot ke atas, bawah, kiri, atau kanan.
+%% rotate :
+%%   Memutar plot sebuah fungsi dalam satu ekspresi dalam x.
+%% anaglyph :
+%%   Menghasilkan plot 3d anaglyph (>anaglyph). Plot ini membutuhkan
+%%   kacamata merah untuk dapat dilihat dengan baik.
+%% viewangle :
+%%   Sudut pandang default, diputar di sekitar z-
+%% zoom :
+%%   Pembesaran tampilan. Standarnya adalah sekitar 2,6.
+%% view :
+%%   Tampilan lengkap, vektor 1x4 yang berisi jarak, zoom, sudut pandang,
+%%   tinggi pandang.
+%% center :
+%%   Vektor ini memindahkan pusat plot. Hal ini diperlukan jika plot
+%%   tidak dipusatkan di (0,0,0) secara otomatis.
+%% style :
+%%   Gaya plot.
+%% color :
+%%   Warna untuk objek dan permukaan yang diarsir
+%% wirecolor :
+%%   Warna untuk plot kawat
+%% cp :
+%%   Menggambar bidang kontur di bawah plot (>cp).
+%% cpcolor :
+%%   Warna untuk bidang kontur.
+>plot3d("x*y",r=4,title="z=x*y",zoom=5):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-087.png
+>plot3d("x*y^3",>user,r=1,>anaglyph,title="Press cursor keys or return!"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-088.png
+>plot3d("x^2*y^3",r=0.9,zlabel="x^2*y^3",>user,zoom=3, ...
+>fillcolor=[2,6],>cp,cpcolor=blue):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-089.png
+>plot3d("x^2+y^3",angle=80°,>contour,spectral=2):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-090.png
+>plot3d("x^y-y^x",a=0,b=4,c=0,d=4,angle=90°,>contour, ...
+>  contourwidth=4,contourcolor=red):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-091.png
+>plot3d("x^2+3y^2",>wire,>anaglyph,title="Use Red/Cyan Glasses!"):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-092.png
+>plot3d("x^3+10y^2",0,2,0,10,scale=[5,1,2],zoom=3,grid=10,>transparent):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-093.png
+>x=-1:0.05:1; y=x'; plot3d(x,x*y^2,y,>user,>hue,angle=20°):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-094.png
+>X=normal(3,50); plot3d(X[1],X[2],X[3],>points,style="/",zoom=3,>user):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-095.png
+% * 11. Plot Kontur
+% 
+% Untuk plot, Euler menambahkan garis grid. Sebagai gantinya
+% dimungkinkan untuk menggunakan garis level dan rona satu warna atau
+% rona berwarna spektral. Euler dapat menggambar tinggi fungsi pada plot
+% dengan bayangan. Di semua plot 3D, Euler dapat menghasilkan anaglyph
+% merah/sian.
+% 
+% - >hue: Menyalakan bayangan cahaya alih-alih kabel.
+%% - >contour: Memplot garis kontur otomatis pada plot.
+%% - level=... (atau levels): Sebuah vektor nilai untuk garis kontur.
+% 
+% Standarnya adalah level="auto", yang menghitung beberapa garis level
+% secara otomatis. Seperti yang Anda lihat di plot, level sebenarnya
+% adalah rentang level.
+% 
+% Gaya default dapat diubah. Untuk plot kontur berikut, kami menggunakan
+% grid yang lebih halus untuk 100x100 poin, skala fungsi dan plot, dan
+% menggunakan sudut pandang yang berbeda.
+>plot3d("exp(-x^2-y^3)",r=2,n=100,level="thin", ...
+% 1."exp(-x^2-y^3)": Ini adalah fungsi matematika yang akan digunakan
+% untuk membuat plot 3D. Fungsi ini adalah fungsi Gaussian dua dimensi
+% yang bergantung pada variabel x dan y.
+% 
+% 2.r = 2: Ini adalah parameter r yang mengatur jangkauan atau rentang
+% dari plot 3D. Dalam hal ini, r diatur menjadi 2, yang mungkin mengacu
+% pada jangkauan plot dalam koordinat x dan y.
+% 
+% 3.n = 100: Ini adalah parameter n yang mengatur jumlah titik sampel
+% dalam plot. Dalam hal ini, ada 100 titik sampel yang akan digunakan
+% untuk menggambarkan plot.
+% 
+% 4.level = "thin": Ini adalah parameter level yang mengatur ketebalan
+% atau tipe garis yang digunakan dalam plot. "Thin" mungkin mengacu pada
+% penggunaan garis tipis dalam plot.
+% 
+% 5.contour: Ini adalah parameter yang menambahkan garis kontur ke plot.
+% Ini memungkinkan Anda melihat kontur atau garis isovalue dalam plot
+% yang menggambarkan tingkat nilai fungsi.
+% 
+% 6.spectral: Ini adalah parameter yang mengatur skema warna plot
+% menjadi skema warna spektral.
+% 
+% 7.fscale = 1: Ini adalah parameter fscale yang mengatur skala faktor
+% untuk plot.
+% 
+% 8.scale = 1.1: Ini adalah parameter scale yang mengatur faktor skala
+% untuk plot.
+% 
+% 9.angle = 45°: Ini adalah parameter angle yang mengatur sudut tampilan
+% plot. Dalam hal ini, plot akan dilihat dari sudut 45 derajat.
+% 
+% 10.height = 20°: Ini adalah parameter height yang mengatur tinggi plot
+% dalam derajat.
+>>contour,>spectral,fscale=1,scale=1.1,angle=45°,height=20°):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-096.png
+>plot3d("exp(x*y)",angle=100°,>contour,color=green):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-097.png
+% 1. "exp(x*y)": Ini adalah fungsi matematika yang akan digunakan untuk
+% membuat plot 3D. Fungsi ini adalah eksponensial dari hasil perkalian
+% antara x dan y. Dalam konteks ini, x dan y adalah variabel-variabel
+% dalam plot.
+% 
+% 2. angle = 100°: Ini adalah parameter angle yang mengatur sudut
+% tampilan plot. Dalam hal ini, plot akan dilihat dari sudut 100
+% derajat.
+% 
+% 3. contour: Ini adalah parameter yang menambahkan garis kontur ke
+% plot. Ini memungkinkan Anda melihat kontur atau garis isovalue dalam
+% plot yang menggambarkan tingkat nilai fungsi.
+% 
+% 4. color = green: Ini adalah parameter color yang mengatur warna plot.
+% Dalam hal ini, plot akan menggunakan warna hijau.
+>plot3d("x^2+y^2",>spectral,>contour,n=100):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-098.png
+% 1. "x^2 + y^2": Ini adalah fungsi matematika yang akan digunakan untuk
+% membuat plot 3D. Fungsi ini adalah fungsi kuadrat dari variabel x dan
+% y. Dalam konteks ini, x dan y adalah variabel-variabel dalam plot.
+% 
+% 2. spectral: Ini adalah parameter yang mengatur skema warna plot
+% menjadi skema warna spektral. Dengan menggunakan skema warna spektral,
+% berbagai nilai dalam plot akan diberikan warna yang berbeda, yang
+% memudahkan untuk memahami perubahan nilai dalam fungsi.
+% 
+% 3. contour: Ini adalah parameter yang menambahkan garis kontur ke
+% plot. Ini memungkinkan Anda melihat kontur atau garis isovalue dalam
+% plot yang menggambarkan tingkat nilai fungsi.
+% 
+% 4. n = 100: Ini adalah parameter n yang mengatur jumlah titik sampel
+% dalam plot. Dalam hal ini, ada 100 titik sampel yang akan digunakan
+% untuk menggambarkan plot. Semakin banyak titik sampel, semakin halus
+% plotnya.
+>plot3d("x^2-y^2",0,1,0,1,angle=220°,level=-1:0.2:1,color=redgreen):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-099.png
+% 1. "x^2 - y^2": Ini adalah fungsi matematika yang akan digunakan untuk
+% membuat plot 3D. Fungsi ini adalah perbedaan antara kuadrat variabel x
+% dan kuadrat variabel y. Dalam konteks ini, x dan y adalah
+% variabel-variabel dalam plot.
+% 
+% 2. 0, 1, 0, 1: Ini adalah parameter yang mengatur batasan tampilan
+% plot. Angka-angka ini mewakili batas minimum dan maksimum untuk x dan
+% y. Dalam hal ini, plot akan dibatasi pada rentang x dan y antara 0 dan
+% 1.
+% 
+% 3. angle = 220°: Ini adalah parameter angle yang mengatur sudut
+% tampilan plot. Dalam hal ini, plot akan dilihat dari sudut 220
+% derajat.
+% 
+% 4. level = -1:0.2:1: Ini adalah parameter level yang mengatur tingkat
+% nilai fungsi yang akan ditampilkan dalam plot. Rentang ini (-1 hingga
+% 1) akan dibagi menjadi beberapa tingkat, dengan selang 0.2 antara
+% masing-masing tingkat. Ini akan menghasilkan garis kontur pada tingkat
+% nilai fungsi tertentu.
+% 
+% 5. color = redgreen: Ini adalah parameter color yang mengatur skema
+% warna plot. Warna yang digunakan adalah kombinasi warna merah dan
+% hijau.
+>plot3d("x^2+y^3",level=[-0.1,0.9;0,1], ...
+>  >spectral,angle=30°,grid=10,contourcolor=gray):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-100.png
+% 1."x^2 + y^3": Ini adalah fungsi matematika yang akan digunakan untuk
+% membuat plot 3D. Fungsi ini adalah hasil penjumlahan dari kuadrat
+% variabel x dan kubik variabel y. Dalam konteks ini, x dan y adalah
+% variabel-variabel dalam plot.
+% 
+% 2.level = [-0.1, 0.9; 0, 1]: Ini adalah parameter level yang mengatur
+% tingkat nilai fungsi yang akan ditampilkan dalam plot. Parameter ini
+% didefinisikan sebagai matriks dua baris dengan dua kolom. Setiap baris
+% berisi batasan tingkat nilai fungsi yang akan ditampilkan dalam plot.
+% Misalnya, [-0.1, 0.9] menunjukkan bahwa tingkat nilai akan ditampilkan
+% dari -0.1 hingga 0.9, dan [0, 1] menunjukkan bahwa tingkat nilai kedua
+% akan ditampilkan dari 0 hingga 1.
+% 
+% 3.spectral: Ini adalah parameter yang mengatur skema warna plot
+% menjadi skema warna spektral.
+% 
+% 4.angle = 30°: Ini adalah parameter angle yang mengatur sudut tampilan
+% plot. Dalam hal ini, plot akan dilihat dari sudut 30 derajat.
+% 
+% 5.grid = 10: Ini adalah parameter grid yang mengatur jumlah garis kisi
+% dalam plot. Dalam hal ini, akan ada 10 garis kisi dalam plot.
+% 
+% 6.contourcolor = gray: Ini adalah parameter contourcolor yang mengatur
+% warna garis kontur dalam plot menjadi abu-abu (gray).
+% 
+% Dalam contoh berikut, kami memplot himpunan, di mana
+% 
+% latex: f(x,y) = x^y-y^x = 0
+% 
+% Kami menggunakan satu garis tipis untuk garis level.
+>plot3d("x^y-y^x",level=0,a=0,b=6,c=0,d=6,contourcolor=red,n=100):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-101.png
+% * 12. Menggambar Grafik Tiga Dimensi
+% * alam modus anaglif
+>X=cumsum(normal(3,100)); ...
+> plot3d(X[1],X[2],X[3],>anaglyph,>wire):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-102.png
+% 1.X = cumsum(normal(3, 100));: Ini adalah urutan perintah yang
+% melakukan beberapa operasi berurutan.
+% 
+% a)normal(3, 100): Ini adalah panggilan fungsi normal yang digunakan
+% untuk menghasilkan 100 bilangan acak dengan distribusi normal
+% (Gaussian) dengan rata-rata 3 dan deviasi standar 1. Hasilnya adalah
+% vektor tiga dimensi yang berisi 100 titik acak dalam ruang tiga
+% dimensi.
+%% b)cumsum(...): Ini adalah panggilan fungsi cumsum yang digunakan untuk
+% menghitung kumulatif dari vektor 3D yang dihasilkan sebelumnya. Dengan
+% kata lain, ini akan menghasilkan vektor yang merupakan akumulasi
+% (penjumlahan berulang) dari vektor 3D tersebut. Hasilnya adalah vektor
+% tiga dimensi yang menggambarkan perjalanan dalam ruang 3D berdasarkan
+% perubahan titik acak.
+%% 2.plot3d(X[1], X[2], X[3], anaglyph, wire);: Ini adalah perintah untuk
+% membuat plot 3D dari data yang telah dihasilkan sebelumnya.
+% 
+% a).X[1], X[2], dan X[3] adalah komponen vektor tiga dimensi X yang
+% akan digunakan sebagai koordinat dalam plot 3D. X[1] digunakan sebagai
+% koordinat sumbu x, X[2] digunakan sebagai koordinat sumbu y, dan X[3]
+% digunakan sebagai koordinat sumbu z.
+%% b)anaglyph: Ini adalah parameter yang mengatur plot menggunakan efek
+% anaglif. Anaglif adalah teknik yang digunakan untuk menghasilkan efek
+% tiga dimensi (3D) dengan menggunakan dua gambar yang sedikit berbeda
+% untuk mata kiri dan kanan, dan penonton memerlukan kacamata anaglif
+% khusus untuk melihat efek 3D.
+%% c)wire: Ini adalah parameter yang mengatur plot sebagai plot tali
+% (wireframe), yang berarti hanya garis-garis yang menghubungkan
+% titik-titik yang akan ditampilkan dalam plot.
+%% 4.X[1], X[2], dan X[3]: Ini adalah komponen dari vektor X. X[1]
+% digunakan sebagai koordinat sumbu x, X[2] digunakan sebagai koordinat
+% sumbu y, dan X[3] digunakan sebagai koordinat sumbu z. Dengan
+% menggunakan komponen vektor ini sebagai koordinat, Anda membuat plot
+% 3D yang merepresentasikan perubahan dalam tiga dimensi berdasarkan
+% data dalam vektor X.
+% 
+% 5.anaglyph: Ini adalah parameter yang mengatur plot menggunakan efek
+% anaglif. Efek anaglif adalah teknik yang digunakan untuk menghasilkan
+% efek tiga dimensi (3D) dengan menggunakan dua gambar yang sedikit
+% berbeda untuk mata kiri dan kanan. Penonton memerlukan kacamata
+% anaglif khusus dengan lensa berwarna berbeda untuk mata kiri dan kanan
+% untuk melihat efek 3D ini. Penggunaan anaglyph dalam kode ini
+% menunjukkan bahwa plot akan dibuat dengan efek anaglif.
+% 
+% 6.wire: Ini adalah parameter yang mengatur plot sebagai plot tali
+% (wireframe). Wireframe adalah gaya plot di mana hanya garis-garis yang
+% menghubungkan titik-titik yang akan ditampilkan dalam plot. Dengan
+% pengaturan wire, Anda akan melihat plot dalam bentuk rangkaian
+% garis-garis yang menggambarkan bentuk objek dalam tampilan 3D.
+>plot3d("x^2+y^3",>anaglyph,>contour,angle=30°):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-103.png
+% 1. "x^2 + y^3": Ini adalah fungsi matematika yang akan digunakan untuk
+% membuat plot 3D. Fungsi ini adalah hasil penjumlahan dari kuadrat
+% variabel x dan kubik variabel y. Dalam konteks ini, x dan y adalah
+% variabel-variabel dalam plot.
+% 
+% 2. anaglyph: Ini adalah parameter yang mengatur plot menggunakan efek
+% anaglif. Anaglif adalah teknik yang digunakan untuk menghasilkan efek
+% tiga dimensi (3D) dengan menggunakan dua gambar yang sedikit berbeda
+% untuk mata kiri dan kanan. Penonton memerlukan kacamata anaglif khusus
+% dengan lensa berwarna berbeda untuk mata kiri dan kanan untuk melihat
+% efek 3D ini. Dengan pengaturan ini, plot akan dibuat dengan efek 3D
+% anaglif.
+% 
+% 3. contour: Ini adalah parameter yang menambahkan garis kontur ke
+% plot. Ini memungkinkan Anda melihat kontur atau garis isovalue dalam
+% plot yang menggambarkan tingkat nilai fungsi.
+% 
+% 4. angle = 30°: Ini adalah parameter angle yang mengatur sudut
+% tampilan plot. Dalam hal ini, plot akan dilihat dari sudut 30 derajat.
+>u=linspace(-1,1,10); v=linspace(0,2*pi,50)'; ...
+>X=(3+u*cos(v/2))*cos(v); Y=(3+u*cos(v/2))*sin(v); Z=u*sin(v/2); ...
+>plot3d(X,Y,Z,>anaglyph,<frame,>wire,scale=2.3):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-104.png
+% 1. u = linspace(-1, 1, 10);: Ini adalah perintah untuk membuat vektor
+% u yang berisi 10 nilai yang dihasilkan secara merata dalam rentang -1
+% hingga 1. Vektor ini akan digunakan dalam perhitungan selanjutnya.
+% 
+% 2.v = linspace(0, 2 * pi, 50)';: Ini adalah perintah untuk membuat
+% vektor v yang berisi 50 nilai yang dihasilkan secara merata dalam
+% rentang 0 hingga 2p (dua kali nilai p). Vektor ini juga akan digunakan
+% dalam perhitungan selanjutnya.
+% 
+% 3.X, Y, dan Z: Ini adalah perintah-perintah yang digunakan untuk
+% menghasilkan data koordinat dalam tiga dimensi. Data ini dihasilkan
+% berdasarkan persamaan yang menggunakan nilai u dan v. Data ini akan
+% digunakan untuk membuat plot 3D.
+% 
+% 4.plot3d(X, Y, Z, anaglyph, <frame, wire, scale = 2.3);: Ini adalah
+% perintah untuk membuat plot 3D berdasarkan data X, Y, dan Z yang telah
+% dihasilkan sebelumnya. Parameter-parameter yang digunakan dalam
+% perintah ini adalah:
+% 
+% a)anaglyph: Ini adalah parameter yang mengatur plot menggunakan efek
+% anaglif, yang memberikan efek tiga dimensi (3D) saat melihat plot
+% dengan kacamata anaglif.
+%% b)<frame: Ini adalah parameter yang mengatur agar frame (kerangka)
+% plot ditampilkan. Ini adalah bingkai atau batasan dari plot.
+%% c)wire: Ini adalah parameter yang mengatur plot dalam bentuk rangkaian
+% garis-garis (wireframe).
+%% d)scale = 2.3: Ini adalah parameter yang mengatur faktor skala plot
+% sebesar 2.3. Ini akan memperbesar plot.
+>u:=linspace(-pi,pi,160); v:=linspace(-pi,pi,400)';  ...
+>x:=(4*(1+.25*sin(3*v))+cos(u))*cos(2*v); ...
+>y:=(4*(1+.25*sin(3*v))+cos(u))*sin(2*v); ...
+> z=sin(u)+2*cos(3*v); ...
+>plot3d(x,y,z,frame=0,scale=1.5,hue=1,light=[1,0,-1],zoom=2.8,>anaglyph):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-105.png
+% * 13. Plot Statistik batang 3d
+% 
+% 
+% Plot bar juga dimungkinkan. Untuk ini, kita harus menyediakan
+% 
+% - x: vektor baris dengan n+1 elemen
+%% - y: vektor kolom dengan n+1 elemen
+%% - z: matriks nilai nxn.
+% 
+% z bisa lebih besar, tetapi hanya nilai nxn yang akan digunakan.
+% 
+% Dalam contoh, pertama-tama kita menghitung nilainya. Kemudian kita
+% sesuaikan x dan y, sehingga vektor berpusat pada nilai yang digunakan.
+>x=-1:0.1:1; y=x'; z=x^2+y^2; ...
+>xa=(x|1.1)-0.05; ya=(y_1.1)-0.05; ...
+>plot3d(xa,ya,z,bar=true):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-106.png
+% Dimungkinkan untuk membagi plot permukaan menjadi dua atau lebih
+% bagian.
+>x=-1:0.1:1; y=x'; z=x+y; d=zeros(size(x)); ...
+>plot3d(x,y,z,disconnect=2:2:20):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-107.png
+% Jika memuat atau menghasilkan matriks data M dari file dan perlu
+% memplotnya dalam 3D, Anda dapat menskalakan matriks ke [-1,1] dengan
+% scale(M), atau menskalakan matriks dengan >zscale. Ini dapat
+% dikombinasikan dengan faktor penskalaan individu yang diterapkan
+% sebagai tambahan.
+>i=1:20; j=i'; ...
+>plot3d(i*j^2+100*normal(20,20),>zscale,scale=[1,1,1.5],angle=-40°,zoom=1.8):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-108.png
+>Z=intrandom(5,100,6); v=zeros(5,6); ...
+>loop 1 to 5; v[#]=getmultiplicities(1:6,Z[#]); end; ...
+>columnsplot3d(v',scols=1:5,ccols=[1:5]):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-109.png
+>
+% * 14. Permukaan Benda Putar
+>plot2d("(x^2+y^2-1)^3-x^2*y^3",r=1.3, ...
+>style="#",color=red,<outline, ...
+>level=[-2;0],n=100):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-110.png
+>ekspresi &= (x^2+y^2-1)^3-x^2*y^3; $ekspresi
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-111.png
+% // latex: \left(y^2+x^2-1\right)^3-x^2\,y^3
+% Kami ingin memutar kurva jantung di sekitar sumbu y. Berikut adalah
+% ungkapan, yang mendefinisikan hati:
+% 
+% latex: f(x,y)=(x^2+y^2-1)^3-x^2.y^3.
+% 
+% Selanjutnya kita atur
+% 
+% latex: x=r.cos(a),\quad y=r.sin(a).
+>function fr(r,a) &= ekspresi with [x=r*cos(a),y=r*sin(a)] | trigreduce; $fr(r,a)
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-112.png
+% // latex: \left(r^2-1\right)^3+\frac{\left(\sin \left(5\,a\right)-\sin \left(  3\,a\right)-2\,\sin a\right)\,r^5}{16}
+% Hal ini memungkinkan untuk mendefinisikan fungsi numerik, yang
+% memecahkan r, jika a diberikan. Dengan fungsi itu kita dapat memplot
+% jantung yang diputar sebagai permukaan parametrik.
+>function map f(a) := bisect("fr",0,2;a); ...
+>t=linspace(-pi/2,pi/2,100); r=f(t);  ...
+>s=linspace(pi,2pi,100)'; ...
+>plot3d(r*cos(t)*sin(s),r*cos(t)*cos(s),r*sin(t), ...
+>>hue,<frame,color=red,zoom=4,amb=0,max=0.7,grid=12,height=50°):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-113.png
+% Berikut ini adalah plot 3D dari gambar di atas yang diputar di sekitar
+% sumbu z. Kami mendefinisikan fungsi, yang menggambarkan objek.
+>function f(x,y,z) ...
+$r=x^2+y^2; ...
+$return (r+z^2-1)^3-r*z^3;
+$endfunction
+>plot3d("f(x,y,z)", ...
+>xmin=0,xmax=1.2,ymin=-1.2,ymax=1.2,zmin=-1.2,zmax=1.4, ...
+>implicit=1,angle=-30°,zoom=2.5,n=[10,60,60],>anaglyph):
+ %image% Vikram Zaky Ardianto_22305144028_Plot 3D-114.png
+% * 15. Menggambar Povray
+% 
+% Dengan bantuan file Euler povray.e, Euler dapat menghasilkan file
+% Povray. Hasilnya sangat bagus untuk dilihat.
+% 
+% Anda perlu menginstal Povray (32bit atau 64bit) dari
+% http://www.povray.org/, dan meletakkan sub-direktori "bin" dari Povray ke jalur lingkungan, atau mengatur variabel "defaultpovray" dengan path lengkap yang menunjuk ke "pvengine.exe".
+% 
+% Antarmuka Povray dari Euler menghasilkan file Povray di direktori home
+% pengguna, dan memanggil Povray untuk mengurai file-file ini. Nama file
+% default adalah current.pov, dan direktori default adalah eulerhome(),
+% biasanya c:\Users\Username\Euler. Povray menghasilkan file PNG, yang
+% dapat dimuat oleh Euler ke dalam buku catatan. Untuk membersihkan
+% file-file ini, gunakan povclear().
+% 
+% Fungsi pov3d memiliki semangat yang sama dengan plot3d. Ini dapat
+% menghasilkan grafik fungsi f(x,y), atau permukaan dengan koordinat
+% X,Y,Z dalam matriks, termasuk garis level opsional. Fungsi ini memulai
+% raytracer secara otomatis, dan memuat adegan ke dalam notebook Euler.
+% 
+% Selain pov3d(), ada banyak fungsi yang menghasilkan objek Povray.
+% Fungsi-fungsi ini mengembalikan string, yang berisi kode Povray untuk
+% objek. Untuk menggunakan fungsi ini, mulai file Povray dengan
+% povstart(). Kemudian gunakan writeln(...) untuk menulis objek ke file
+% adegan. Terakhir, akhiri file dengan povend(). Secara default,
+% raytracer akan dimulai, dan PNG akan dimasukkan ke dalam notebook
+% Euler.
+% 
+% Fungsi objek memiliki parameter yang disebut "look", yang membutuhkan
+% string dengan kode Povray untuk tekstur dan hasil akhir objek. Fungsi
+% povlook() dapat digunakan untuk menghasilkan string ini. Ini memiliki
+% parameter untuk warna, transparansi, Phong Shading dll.
+% 
+% Perhatikan bahwa alam semesta Povray memiliki sistem koordinat lain.
+% Antarmuka ini menerjemahkan semua koordinat ke sistem Povray. Jadi
+% Anda dapat terus berpikir dalam sistem koordinat Euler dengan z
+% menunjuk vertikal ke atas, a nd x,y,z sumbu dalam arti tangan kanan.
+%% Anda perlu memuat file povray.
+>load povray;
+% Pastikan, direktori bin Povray ada di jalur. Jika tidak, edit variabel
+% berikut sehingga berisi path ke povray yang dapat dieksekusi.
+>defaultpovray="D:\poray\bin\pvengine.exe"
+D:\poray\bin\pvengine.exe
+% Untuk kesan pertama, kami memplot fungsi sederhana. Perintah berikut
+% menghasilkan file povray di direktori pengguna Anda, dan menjalankan
+% Povray untuk ray tracing file ini.
+% 
+% Jika Anda memulai perintah berikut, GUI Povray akan terbuka,
+% menjalankan file, dan menutup secara otomatis. Karena alasan keamanan,
+% Anda akan ditanya, apakah Anda ingin mengizinkan file exe untuk
+% dijalankan. Anda dapat menekan batal untuk menghentikan pertanyaan
+% lebih lanjut. Anda mungkin harus menekan OK di jendela Povray untuk
+% mengakui dialog awal Povray.
+>pov3d("x^2+y^2",zoom=3);
+
+>
+
+% 1. u := linspace(-pi, pi, 160);: Ini adalah perintah untuk membuat
+% vektor u yang berisi 160 nilai yang dihasilkan secara merata dalam
+% rentang dari -p hingga p.
+% 
+% 2.v := linspace(-pi, pi, 400)';: Ini adalah perintah untuk membuat
+% vektor v yang berisi 400 nilai yang dihasilkan secara merata dalam
+% rentang dari -p hingga p. Vektor ini diubah menjadi matriks kolom
+% dengan penambahan tanda apostrof (') di belakangnya.
+% 
+% 3.x, y, dan z: Ini adalah perintah-perintah yang digunakan untuk
+% menghasilkan data koordinat dalam tiga dimensi. Data ini dihasilkan
+% berdasarkan persamaan yang menggunakan nilai u dan v. Data ini akan
+% digunakan untuk membuat plot 3D.
+% 
+% 4.plot3d(x, y, z, frame = 0, scale = 1.5, hue = 1, light = [1, 0, -1],
+% zoom = 2.8, anaglyph);: Ini adalah perintah untuk membuat plot 3D
+% berdasarkan data x, y, dan z yang telah dihasilkan sebelumnya.
+% Parameter-parameter yang digunakan dalam perintah ini adalah:
+% 
+% a)frame = 0: Ini adalah parameter yang mengatur agar frame (kerangka)
+% plot tidak ditampilkan.
+%% b)scale = 1.5: Ini adalah parameter yang mengatur faktor skala plot
+% sebesar 1.5. Ini akan memperbesar plot.
+%% c)hue = 1: Ini adalah parameter yang mengatur warna plot dengan skala
+% warna tunggal.
+%% d)light = [1, 0, -1]: Ini adalah parameter yang mengatur pencahayaan
+% plot dengan arah cahaya yang ditentukan oleh vektor [1, 0, -1].
+%% e)zoom = 2.8: Ini adalah parameter yang mengatur tingkat zoom plot
+% sebesar 2.8. Ini akan memperbesar plot.
+%% f)anaglyph: Ini adalah parameter yang mengatur plot menggunakan efek
+% anaglif, yang memberikan efek tiga dimensi (3D) saat dilihat dengan
+% kacamata anaglif.
+> 
+
+>

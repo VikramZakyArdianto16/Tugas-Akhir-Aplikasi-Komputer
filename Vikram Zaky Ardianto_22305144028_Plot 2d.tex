@@ -1,0 +1,1956 @@
+\documentclass{article}
+
+\usepackage{eumat}
+
+\begin{document}
+\begin{eulernotebook}
+\eulersubheading{Vikram Zaky Ardianto}
+\eulersubheading{22305144028}
+\eulersubheading{Matematika E}
+\begin{eulercomment}
+\begin{eulercomment}
+\eulerheading{Menggambar Grafik Fungsi Satu Variabel}
+\begin{eulercomment}
+\begin{eulercomment}
+\eulerheading{dalam Bentuk Ekspresi Langsung Ekspresi tunggal}
+\begin{eulercomment}
+Di dalam program numerik EMT, ekspresi adalah string. Jika ditandai
+sebagai simbolis, mereka akan mencetak melalui Maxima, jika tidak
+melalui EMT. Ekspresi dalam string digunakan untuk membuat plot dan
+banyak fungsi numerik. Untuk ini, variabel dalam ekspresi harus "x".
+
+expresi dalam string
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "x^5-x^2-3"
+\end{eulerprompt}
+\begin{euleroutput}
+  x^5-x^2-3
+\end{euleroutput}
+\begin{eulercomment}
+plot ekspresi
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(expr,-2,2) :
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-001.png}
+\begin{eulercomment}
+contoh 1
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "sin (x-5)"
+\end{eulerprompt}
+\begin{euleroutput}
+  sin (x-5)
+\end{euleroutput}
+\begin{eulerprompt}
+>aspect (1) ; plot2d(expr,-2,2):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-002.png}
+\begin{eulercomment}
+contoh 2 dan penggunaan grid
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1)plot2d("log(x) + 3",-0.1,2, grid=6):
+\end{eulerprompt}
+\begin{euleroutput}
+  Commands must be separated by semicolon or comma!
+  Found: plot2d("log(x) + 3",-0.1,2, grid=6): (character 112)
+  You can disable this in the Options menu.
+  Error in:
+  aspect(1)plot2d("log(x) + 3",-0.1,2, grid=6): ...
+           ^
+\end{euleroutput}
+\begin{eulercomment}
+contoh 3 dan penggunaan parameter square (atau \textgreater{}square) untuk memilih
+y-range secara otomatis 
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1,1) ; plot2d("x^4-2",-5,5, >square); insimg(15)
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-003.png}
+\begin{eulerprompt}
+>aspect(2) ; plot2d("x^4-2", -5,5 ):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-004.png}
+\begin{eulercomment}
+contoh 4 dan memberikan nama atau label pada garis sumbu
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("cos(x)", -4, 6, xl="x",yl="y") :
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-005.png}
+\eulerheading{Menggambar Grafik Fungsi Satu Variabel}
+\begin{eulercomment}
+* yang Rumusnya Disimpan dalam Variabel Ekspresi
+
+ekspresi
+\end{eulercomment}
+\begin{eulerprompt}
+>expr &= x^5-1
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                   5
+                                  x  - 1
+  
+\end{euleroutput}
+\begin{eulercomment}
+plot dari ekspresi diatas 
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(2); plot2d(expr,-1,1):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-006.png}
+\begin{eulercomment}
+contoh 1
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "x^10-x-5"
+\end{eulerprompt}
+\begin{euleroutput}
+  x^10-x-5
+\end{euleroutput}
+\begin{eulerprompt}
+>aspect(2) ; plot2d(expr,-1,1):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-007.png}
+\begin{eulercomment}
+menggunakan variabel lokal
+\end{eulercomment}
+\begin{eulercomment}
+Ekspresi dapat dievaluasi secara numerik. Variabel x,y,z ditetapkan
+secara otomatis. Variabel lain dapat ditetapkan berdasarkan parameter
+yang ditetapkan( variabel lokal ) atau melalui variabel global.
+variabel global adalah variabel yang selalu bisa diakses kapan pun dan
+di mana pun.
+\end{eulercomment}
+\begin{eulerprompt}
+>expr &= a*x^5
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                      5
+                                   a x
+  
+\end{euleroutput}
+\begin{eulercomment}
+menggunakan variabel global 
+\end{eulercomment}
+\begin{eulerprompt}
+>a=6; expr(2.5)
+\end{eulerprompt}
+\begin{euleroutput}
+  585.9375
+\end{euleroutput}
+\begin{eulercomment}
+menggunakan variabel lokal
+\end{eulercomment}
+\begin{eulerprompt}
+>expr(2.5,a=6)
+\end{eulerprompt}
+\begin{euleroutput}
+  585.9375
+\end{euleroutput}
+\begin{eulercomment}
+evaluasi langsung
+\end{eulercomment}
+\begin{eulerprompt}
+>"a*x^5"(3,4)
+\end{eulerprompt}
+\begin{euleroutput}
+  1458
+\end{euleroutput}
+\begin{eulercomment}
+Oleh karena itu, banyak algoritma EMT yang dapat menggunakan ekspresi
+dalam x, bukan fungsi. Namun jika parameter tambahan yang tidak
+bersifat global dilibatkan, fungsi harus diutamakan.
+
+menggunakan variabel  global "a"
+\end{eulercomment}
+\begin{eulerprompt}
+>a=5; plot2d("a*x^3-x",0,1):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-008.png}
+\begin{eulerprompt}
+>function f(x,a) := a*x^3-x
+\end{eulerprompt}
+\begin{eulercomment}
+gunakan "a=6" sebagai parameter
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("f",0,1;6):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-009.png}
+\begin{eulercomment}
+alternatif lain
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(\{\{"f",6\}\},0,1):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-010.png}
+\begin{eulercomment}
+alternatif lain 
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("f(x,6)",0,1):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-011.png}
+\eulerheading{Menggambar Fungsi Simbolik}
+\begin{eulercomment}
+Fungsi Plot yang paling penting untuk plot planar adalah plot2d().
+Fungsi ini diimplementasikan dalam bahasa Euler dalam file "plot.e",
+yang dimuat diawal program.
+
+plot2d() menerima ekspresi, fungsi, dan data.
+
+Rentang plot diatur dengan parameter yang ditetapkan ssbagai berikut\\
+- a,b: rentang x (default -2,2)\\
+- -c,d: rentang y (default: skala dengan nilai)\\
+- r: alternatifnya radius di sekitar pusat plot\\
+- cx,cy: koordinat pusat plot (default 0,0)
+
+Keterangan:(menggambar grafik fungsi satu variabel yang fungsinya
+didefinisikan sebagai fungsi simbolik)\\
+- \&: untuk menampilkan variabel pada teks
+
+Berikut adalah beberapa contoh menggunakan fungsi. Seperti biasa di
+EMT, fungsi yang berfungsi untuk fungsi atau ekspresi lain, jadi kita
+dapat meneruskan parameter tambahan (selain x) yang bukan variabel
+global ke fungsi dengan parameter titik koma atau dengan koleksi
+panggilan.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("f",0,1;0.4): // plot with a=0.4
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-012.png}
+\begin{eulerprompt}
+>plot2d(\{\{"f",0.2\}\},0,1); 
+>plot2d(\{\{"f(x,b)",b=0.1\}\},0,1):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-013.png}
+\begin{eulerprompt}
+>function f(x) := x^3-x;...
+>plot2d("f",r=1):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-014.png}
+\begin{eulerprompt}
+>plot2d("exp(-a*x^2)/a"):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-015.png}
+\begin{eulercomment}
+Berikut merupakan ringkasan dari fungsi yang diterima\\
+- ekspresi atau ekspresi simbolik dalam x\\
+- fungsi atau fungsi simbolis dengan nama sebagai "f"\\
+- fungsi simbolis hanya dengan nama f\\
+\end{eulercomment}
+\begin{eulerttcomment}
+ 
+\end{eulerttcomment}
+\begin{eulercomment}
+Fungsi plot2d() juga menerima fungsi simbolis. Untuk fungsi simbolis,
+hanya nama saja yang berfungsi.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x) &= diff(x^x,x)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                              x
+                             x  (log(x) + 1)
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>plot2d(f,0,2):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-016.png}
+\begin{eulerprompt}
+>$&expr = sin (x)*exp(-x)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+a\,x^5=e^ {- x }\,\sin x
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>plot2d(expr,0,3pi):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-018.png}
+\begin{eulerprompt}
+>plot2d("cos(x)","sin(3*x)"):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-019.png}
+\eulerheading{Menggambar Fungsi Numerik}
+\begin{eulercomment}
+Fungsi Numerik adalah sebuah fungsi dengan himpunan bilangan cacah
+sebagai domain dan himpunan mendasar yang melibatkan hubungan
+matematis antara bilangan yang menjadi domain dan bilangan sebagai
+kodomain.
+\end{eulercomment}
+\begin{eulerprompt}
+> 
+\end{eulerprompt}
+\begin{eulercomment}
+Fungsi numerik  memiliki  1  atau  lebih  variabel  independen, yang
+sering dilambangkan sebagai "X". Variabel X adalah nilai atau
+parameter yang dapat berubah, dan fungsi numerik menggambarkan
+bagaimana variabel ini memengaruhi variabel dependen. Variabel
+dependen adalah hasil perhitungan atau keluaran dari fungsi numerik
+yang bergantung pada nilai atau perubahan dalam variabel independen.
+
+\end{eulercomment}
+\begin{eulercomment}
+Dalam EMT cara mendefinisikan fungsi menggunakan syntak function.
+untuk mendefinisikan fungsi numerik menggunakan tanda ":="
+
+Fungsi  numerik  menjelaskan bagaimana bilangan  dalam  domain
+berhubungan dengan bilangan sebagai kodomain, biasanya diberikan dalam
+bentuk rumus matematik(persamaan) atau aturan yang memetakan setiap
+domain kedalam kodomain yang sesuai. contoh:
+
+f(x)=2x+3
+\end{eulercomment}
+\begin{eulerprompt}
+> 
+\end{eulerprompt}
+\begin{eulercomment}
+(x)(variabel dependen) adalah fungsi yang memetakan setiap nilai
+x(variabel independen)kedalam nilai 2x+3. Terdapat berbagai jenis
+fungsi yang termasuk ke dalam fungsi numerik, diantaranya:
+
+Fungsi linier dengan bentuk umum\\
+f (x) = ax + b
+\end{eulercomment}
+\begin{eulercomment}
+Fungsi kuadrat dengan bentuk umum
+
+f (x) = ax2 + bx + c
+\end{eulercomment}
+\begin{eulercomment}
+Fungsi eksponensial dengan bentuk umum
+
+f (x) = ax
+\end{eulercomment}
+\begin{eulercomment}
+Fungsi logaritma dengan bentuk umum
+
+f (x) = log a(x)
+
+\end{eulercomment}
+\begin{eulercomment}
+Fungsi trigonometri dengan bentuk umum
+
+f (x) = sin(x), f (x) = cos(x)
+
+\end{eulercomment}
+\begin{eulercomment}
+Salah satu  cara  yang  umum  digunakan  untuk  memvisualisasikan
+fungsi numerik adalah dengan menggambar grafiknya. Grafik ini
+menggambarkan bagaimana variabel dependen berubah seiring perubahan
+variabel independen dan membantu dalam memahami sifat-sifat fungsi,
+seperti titik ekstrim
+\end{eulercomment}
+\eulersubheading{Contoh soal}
+\begin{eulerprompt}
+>function r(x):= abs(x-10)
+>function s(x):= abs(sin(x))
+>r(-5)
+\end{eulerprompt}
+\begin{euleroutput}
+  15
+\end{euleroutput}
+\begin{eulerprompt}
+>function t(x):=log(x*(2+sin(x/1000)))
+>function u(x):=integrate("(sin(x)*exp(-x^2)"0,x)
+>function v(x):=logbase((x^2),2)
+>plot2d("v"):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-020.png}
+\begin{eulerprompt}
+>plot2d("s"):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-021.png}
+\begin{eulerprompt}
+>plot2d("t",-2,2):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-022.png}
+\begin{eulerprompt}
+>function P(x):=x*cos(x)
+>plot2d("P",-2*pi,2*pi):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-023.png}
+\begin{eulercomment}
+Fungsi plot2d() adalah fungsi serbaguna untuk membuat grafik dalam
+bidang (grafik 2D). Fungsi ini dapat digunakan untuk membuat grafik
+fungsi-fungsi satu variabel, grafik data,  kurva-kurva  dalam  bidang,
+grafik batang (bar plots), grid dari bilangan kompleks, dan grafik
+implisit dari fungsi dua variabel.
+
+Parameter\\
+x,y : persamaan, fungsi, atau vektor data a,b,c,d : area plot (default
+a=-2, b=2)\\
+r  :  jika  r  diatur,  maka  a=cx-r,  b=cx+r,  c=cy-r,  d=cy+r r bisa
+berupa vektor [rx,ry] atau vektor [rx1,rx2,ry1,ry2]. xmin,xmax :
+rentang parameter untuk kurva\\
+auto : tentukan rentang y secara otomatis (default)\\
+square : jika benar, mencoba menjaga rentang x-y tetap persegi n :
+jumlah interval (default adalah adaptif)\\
+grid : 0 = tanpa grid dan label, 1 = hanya sumbu,\\
+2 = grid normal (lihat di bawah untuk jumlah garis grid) 3 = di dalam
+sumbu\\
+4 = tanpa grid\\
+5 = grid penuh termasuk margin 6 = tanda di pinggiran\\
+7 = hanya sumbu\\
+8 = hanya sumbu, sub-ticks frame : 0 = tanpa bingkai\\
+framecolor: warna bingkai dan grid\\
+margin : angka antara 0 dan 0,4 untuk margin di sekitar plot color :
+Warna kurva. Jika ini adalah vektor warna,akan digunakan untuk setiap
+baris matriks plot. Dalam  hal grafik titik, harus berupa vektor
+kolom. Jika vektor baris atau matriks penuh warna digunakan untuk
+grafik titik, akan digunakan untuk setiap titik data.\\
+thickness : ketebalan garis untuk kurva
+
+Nilai ini dapat lebih kecil dari 1 untuk garis yang sangat tipis. \\
+style: Gaya plot untuk garis, penanda, dan isian.
+
+Untuk titik gunakan\\
+"[]", "\textless{}\textgreater{}", ".", "..", "...", "*", "+", " ", "-", "o"\\
+"[]", "\textless{}\textgreater{}", "o" (bentuk terisi)\\
+"[]w", "\textless{}\textgreater{}w", "ow" (tidak transparan)
+
+Untuk garis gunakan\\
+"-", "-", "-.", ".", ".-.", "-.-", "-\textgreater{}"
+
+Untuk poligon terisi atau plot batang gunakan\\
+"", "O", "O", "/", "", "/","+", " ", "-", "t"
+
+points : plot titik tunggal sebagai gantinya garis segmen addpoints :
+jika benar, plot segmen garis dan titik\\
+add : tambahkan plot ke plot yang ada\\
+user : aktifkan interaksi pengguna untuk fungsi delta : ukuran langkah
+untuk interaksi pengguna\\
+bar : plot batang (x adalah batas interval, y adalah nilai interval)
+histogram : plot frekuensi x dalam n subinterval\\
+distribusi=n : plot distribusi x dengan n subinterval even : gunakan
+nilai antar untuk histogram otomatis. steps : plot fungsi sebagai
+fungsi langkah (steps=1,2)\\
+adaptive : gunakan plot adaptif (n adalah jumlah minimal langkah)
+level : plot garis level dari fungsi implisit dua variabel\\
+outline : menggambar batas rentang level.
+\end{eulercomment}
+\begin{eulerprompt}
+>function s(x):=(x-10)
+>function r(x):=abs(sin(x))
+>s(-5)
+\end{eulerprompt}
+\begin{euleroutput}
+  -15
+\end{euleroutput}
+\begin{eulerprompt}
+>function t(x):=log(x*(2+sin(x/1000)))
+>function u(x):=integrate("(sin(x)*exp(-x^2)"),0,x)
+>function v(x):=logbase((x^2),2)
+>plot2d("v"):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-024.png}
+\begin{eulerprompt}
+>plot2d("s"):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-025.png}
+\begin{eulerprompt}
+>function P(x):=x*cos(x)
+>plot2d("P", -2*pi,2*pi):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-026.png}
+\eulerheading{Menggambar Beberapa Kurva Sekaligus}
+\begin{eulercomment}
+Dalam subtopik ini, kita akan membahas mengenai cara menggambar
+beberapa kurva sekaligus. Dalam hal ini kita dapat menggambar beberapa
+kurva dalam jendela grafik yang berbeda secara bersama-sama. Untuk
+membuat ini kita dapat menggunakan perintah figure(). Berikut contoh
+dari menggambar beberapa kurva sekaligus
+
+Menggambar plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+x^n, 1 \leq n \leq 4
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>reset;
+>figure(2,2);...
+>for n=1 to 4; figure(n); plot2d("x^"+n); end;...
+>figure(0):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-028.png}
+\begin{eulercomment}
+Penjelasan sintaks dari plot fungsi
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+x^n,  1 \leq n \leq 4
+\]
+\end{eulerformula}
+\begin{eulercomment}
+- reset;\\
+Perintah ini berguna untuk menghapus grafik yang telah ada sebelumnya,
+sehingga kita dapat memulai dari awal untuk menggambar grafik\\
+- figure(2x2);\\
+Perintah figure() digunakan untuk membuat jendela grafik dengan ukuran\\
+axb. Dalam kasus ini perintah figure(2,2) memiliki makna bahwa jendela
+grafik yang dibuat berukuran 2x2. Artinya, akan ada empat jendela
+grafik yang akan ditampilkan dengan tata letak 2 baris dan 2 kolom.\\
+- for n=1 to 4;\\
+Perintah ini digunakan untuk melakukan pengulangan (looping) perintah
+sebanyak empat kali, yaitu dari 1 hingga 4.\\
+- figure(n);\\
+Perintah ini digunakan untuk beralih dari jendela grafik satu ke
+jendela grafik lainnya (jendela grafik ke-n).\\
+- plot2d("x\textasciicircum{}"+n);\\
+Perintah plot2d() digunakan untuk membuat plot fungsi matematika.\\
+Dalam hal ini fungsi yang diplot adalah x\textasciicircum{}n, di mana n adalah nilai
+dari variabel yang sedang diulang. Dengan kata lain, ini akan membuat\\
+plot dari x\textasciicircum{}1, x\textasciicircum{}2, x\textasciicircum{}3, dan x\textasciicircum{}4 dalam jendela grafik yang sesuai\\
+- end;\\
+Perintah ini menandakan akhir dari looping.\\
+- figure(0);\\
+Perintah ini digunakan untuk beralih kembali ke jendela grafik utama.
+\end{eulercomment}
+\begin{eulercomment}
+Dari sini dapat kita perhatikan untuk membuat kurva fungsi x\textasciicircum{}n (x
+pangkat n) perintahnya tidak ditulis dengan (x\textasciicircum{}n) melainkan ditulis
+dengan ("x\textasciicircum{}"+n). Tanda petik dua ("...") digunakan untuk
+mengidentifikasi bahwa teks tersebut merupakan ekspresi matematika.\\
+Sedangkan tanda (+) digunakan untuk menggabungkan string dengan nilai
+yang berubah-ubah atau variabel.
+
+Contoh lain:\\
+Menggambar plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x)=x^3-x, -2<x<2
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>reset;
+>figure(3,3);...
+>for k=1:9; figure(k); plot2d("x^3-x",-2,2,grid=k); end;...
+>figure(0):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-029.png}
+\begin{eulerttcomment}
+ Penjelasan sintaks dari plot fungsi
+\end{eulerttcomment}
+\begin{eulerformula}
+\[
+f(x)=x^3-x, -2<x<2
+\]
+\end{eulerformula}
+\begin{eulercomment}
+- reset;\\
+Perintah ini berguna untuk menghapus grafik yang telah ada sebelumnya,
+sehingga kita dapat memulai dari awal untuk menggambar grafik\\
+- figure (3,3);\\
+Perintah ini digunakan untuk membuat jendela grafik dengan ukuran 3x3.
+Artinya, akan ada empat jendela grafik yang akan ditampilkan dengan
+tata letak 3 baris dan 3 kolom.\\
+- for k=1:9;\\
+Perintah ini digunakan untuk melakukan pengulangan (looping) perintah
+sebanyak sembilan kali.\\
+- figure(n);\\
+Perintah ini digunakan untuk beralih dari jendela grafik satu ke\\
+\end{eulercomment}
+\begin{eulerttcomment}
+ jendela grafik lainnya (jendela grafik ke-n).
+\end{eulerttcomment}
+\begin{eulercomment}
+- plot2d("x\textasciicircum{}3-x",-2,2,grid=k);\\
+Perintah plot2d() digunakan untuk membuat plot fungsi matematika.\\
+Dalam hal ini fungsi yang diplot adalah x\textasciicircum{}3-x, dengan batas sumbu x
+dari -2 hingga 2. Argumen grid=k digunakan untuk mengaktifkan grid
+pada jendela grafik ke-k.\\
+- end;\\
+Perintah ini menandakan akhir dari looping.\\
+- figure(0);\\
+Perintah ini digunakan untuk beralih kembali ke jendela grafik utama.
+
+Dari contoh diatas dapat kita perhatikan bahwa tampilan plot dari yang
+ke-1 hingga ke-9 memiliki tampilan yang berbeda-beda. Dalam EMT
+memiliki berbagai gaya plot 2D yang dapat dijalankan menggunakan
+perintah grid=n dimana n adalah jumlah langkah minimal. Setiap nilai n
+memiliki tampilan plot adaptif yang berbeda dalam plot 2D, diantaranya
+yaitu:\\
+0 : tidak ada grid (kisi), frame, sumbu, dan label, hanya kurva saja\\
+1 : dengan sumbu, label-label sumbu di luar frame jendela grafik\\
+2 : tampilan default\\
+3 : dengan grid pada sumbu x dan y, label-label sumbu berada di dalam
+jendela grafik\\
+4 : tidak ada grid (kisi), sumbu x dan y, dan label berada di luar
+frame jendela grafik\\
+5 : tampilan default tanpa margin di sekitar plot\\
+6 : hanya dengan sumbu x y dan label, tanpa grid\\
+7 : hanya dengan sumbu x y dan tanda-tanda pada sumbu.\\
+8 : hanya dengan sumbu dan tanda-tanda pada sumbu, dengan tanda-tanda
+yang lebih halus pada sumbu.\\
+9 : tampilan default dengan tanda-tanda kecil di dalam jendela\\
+10: hanya dengan sumbu-sumbu, tanpa tanda
+
+Contoh lain:\\
+Menggambar plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x)=2x^3-x
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>reset;
+>aspect(1.2);
+>figure(3,4); ...
+> figure(2); plot2d("2x^3-x",grid=1); ... // x-y-axis
+> figure(3); plot2d("2x^3-x",grid=2); ... // default ticks
+>figure(4); plot2d("2x^3-x",grid=3); ... // x-y- axis with labels inside
+> figure(5); plot2d("2x^3-x",grid=4); ... // no ticks, only labels
+>figure(6); plot2d("2x^3-x",grid=5); ... // default, but no margin
+>figure(7); plot2d("2x^3-x",grid=6); ... // axes only
+>figure(8); plot2d("2x^3-x",grid=7); ... // axes only, ticks at axis
+>figure(9); plot2d("2x^3-x",grid=8); ... // axes only, finer ticks at axis
+>figure(10); plot2d("2x^3-x",grid=9); ... // default, small ticks inside
+>figure(11); plot2d("2x^3-x",grid=10); ...// no ticks, axes only
+>figure(0):
+\end{eulerprompt}
+\eulerimg{22}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-030.png}
+\begin{eulercomment}
+Penjelasan sintaks dari plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x)=2x^3-x
+\]
+\end{eulerformula}
+\begin{eulercomment}
+- aspect(1.2);\\
+Perintah aspect() digunakan untuk mengatur rasio aspek dari jendela
+grafik. Hal ini berarti perintah aspect(1.2); akan menghasilkan plot
+dengan perbandingan rasio panjang dan lebar 2:1.\\
+- figure(3,4);\\
+Perintah ini digunakan untuk membuat jendela grafik dengan ukuran 3x4.\\
+Jadi, akan ada total 12 jendela grafik yang akan ditampilkan dalam
+tata letak 3 baris dan 4 kolom.\\
+- figure(1); plot2d("x\textasciicircum{}3-x",grid=0); ...\\
+Adalah perintah untuk beralih ke jendela grafik pertama dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x tanpa grid, frame, atau sumbu.\\
+- figure(2); plot2d("x\textasciicircum{}3-x",grid=1); ...\\
+Adalah perintah untuk beralih ke jendela grafik kedua dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan grid hanya pada sumbu x dan y.\\
+- figure(3); plot2d("x\textasciicircum{}3-x",grid=2); ...\\
+Adalah perintah untuk beralih ke jendela grafik ketiga dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan tampilan default, termasuk tanda-tanda
+default pada sumbu.\\
+- figure(4); plot2d("x\textasciicircum{}3-x",grid=3); ...\\
+Adalah perintah untuk beralih ke jendela grafik keempat dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan grid pada sumbu x dan y, serta
+label-label sumbu yang ada di dalam jendela.\\
+- figure(5); plot2d("x\textasciicircum{}3-x",grid=4); ...\\
+Adalah perintah untuk beralih ke jendela grafik kelima dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x tanpa tanda-tanda sumbu, hanya label-label
+yang ada.\\
+- figure(6); plot2d("x\textasciicircum{}3-x",grid=5); ...\\
+Adalah perintah untuk beralih ke jendela grafik keenam dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan tampilan default, tetapi tanpa margin
+di sekitar plot.\\
+- figure(7); plot2d("x\textasciicircum{}3-x",grid=6); ...\\
+Adalah perintah untuk beralih ke jendela grafik ketujuh dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu (tanpa grid atau
+label).\\
+- figure(8); plot2d("x\textasciicircum{}3-x",grid=7); ...\\
+Adalah perintah untuk beralih ke jendela grafik kedelapan dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu dan
+tanda-tanda pada sumbu.\\
+- figure(9); plot2d("x\textasciicircum{}3-x",grid=8); ...\\
+Adalah perintah untuk beralih ke jendela grafik kesembilan dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu dan
+tanda-tanda pada sumbu, dengan tanda-tanda yang lebih halus pada
+sumbu.\\
+- figure(10); plot2d("x\textasciicircum{}3-x",grid=9); ...\\
+Adalah perintah untuk beralih ke jendela grafik kesepuluh dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x dengan tanda-tanda default kecil
+di dalam jendela.\\
+- figure(11); plot2d("x\textasciicircum{}3-x",grid=10); ...\\
+Adalah perintah untuk beralih ke jendela grafik kesebelas dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu, tanpa
+tanda-tanda.\\
+- figure(0);\\
+Adalah perintah untuk beralih kembali ke jendela grafik utama atau
+jendela grafik dengan nomor 0 setelah semua perintah dalam urutan
+selesai dieksekusi.
+
+Dari ketiga contoh di atas, dapat kita katakan bahwa untuk menggambar
+beberapa kurva sekaligus itu dapat dilakukan dengan satu baris
+perintah ataupun dengan cara mendefinisikannya 1 per 1.
+
+Terlihat beberapa jenis grid memiliki tampilan yang mirip atau sama,
+seperti 1 dan 2, 2 dan 5, 4 dan 9, 7 dan 8, untuk dapat membedakannya
+secara lebih jelas, ubah grid dari contoh di bawah ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>reset;
+>aspect(1.3);
+>figure(1,3);...
+>figure (1); plot2d("x^2*exp(-x)",0,10);...
+>figure (2); plot2d("2*exp(x)",-5,5);...
+>figure (3); plot2d("exp(x^2)",-2,2);...
+>figure (0):
+\end{eulerprompt}
+\eulerimg{20}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-031.png}
+\begin{eulercomment}
+Contoh lain:
+\end{eulercomment}
+\begin{eulerprompt}
+>reset;
+>aspect(3/4);
+>figure(2,1);...
+>for a=1:2; figure(a); plot2d("2*x*log(x^2)",0,3,grid=a); end;...
+>figure(0):
+\end{eulerprompt}
+\eulerimg{34}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-032.png}
+\eulerheading{Menggambar Beberapa Kurva pada bidang }
+\begin{eulercomment}
+* koordinat yang sama 
+
+Plot lebih dari satu fungsi (multiple function) ke dalam satu jendela
+dapat dilakukan dengan berbagai cara. Salah satu caranya adalah
+menggunakan \textgreater{}add untuk beberapa panggilan ke plot2d secara
+keseluruhan, kecuali panggilan pertama.
+
+Berikut contohnya:\\
+menggambar kurva\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+ f(x)=cos(x)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)= x^2
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(); plot2d("cos(x)",r=3); plot2d("x^2",style=".",>add):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-035.png}
+\begin{eulerformula}
+\[
+f(x)=cos(x)-1
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)= sin(x)-1
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(2); plot2d("cos(x)-1",-1,6); plot2d("sin(x)-1",style="--",>add):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-036.png}
+\begin{eulercomment}
+Selain menggunakan \textgreater{}add kita juga bisa menambahkannya secara langsung
+
+Berikut contohnya:\\
+Menggambar kurva\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x)= 2x+1
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)= -2x+1
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>plot2d(["2x+1","x"],0,8):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-037.png}
+\begin{eulerformula}
+\[
+f(x)=sin(2x)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)=cos(3x)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(1.5); plot2d(["sin(2x)","cos(3x)"],0,8):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-038.png}
+\begin{eulercomment}
+Kegunaan \textgreater{}add yang lain juga bisa untuk menambahkan titik pada kurva.
+
+Berikut contohnya:\\
+Menambahkan sebuah titik di\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x)= x+4
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(); plot2d("x+4",-2,5,); plot2d(2,6,>points,>add):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-039.png}
+\begin{eulercomment}
+Kita juga bisa mencari titik perpotongan dengan cara berikut:
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+sin(x)=2x
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>plot2d(["sin(x)","2x"],r=2,cx=1,cy=1, ...
+>  color=[black,blue],style=["-","."], ...
+>  grid=1);
+>x0=solve("sin(x)-2x",1);  ...
+>  plot2d(x0,x0,>points,>add);  ...
+>  label("sin(x) = 2x",x0,x0,pos="cl",offset=20):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-040.png}
+\begin{eulerprompt}
+>function f(x,a) := x^2+a*x-x/a; ...
+>plot2d("f",-10,10;1,title="a=1"):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-041.png}
+\begin{eulerprompt}
+> plot2d(\{\{"f",1\}\},-10,10); ...
+>for a=1:10; plot2d(\{\{"f",a\}\},>add); end:
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-042.png}
+\begin{eulerprompt}
+>function f(x,a) := x^2*exp(-x^2/a); ...
+>plot2d("f",-10,10;5,thickness=2,title="a=5"):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-043.png}
+\begin{eulerprompt}
+>plot2d(\{\{"f",1\}\},-8,8); ...
+>for a=2:5; plot2d(\{\{"f",a\}\},>add,thickness=2); end:
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-044.png}
+\begin{eulerprompt}
+>aspect(2.1); &plot2d(1/x,[x,-1,1]):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-045.png}
+\begin{eulerprompt}
+>x=linspace(-1,1,50);...
+>plot2d("1/x"):
+\end{eulerprompt}
+\eulerimg{12}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-046.png}
+\eulerheading{Menuliskan Label koordinat,label kurva,}
+\begin{eulercomment}
+* dan keterangan kurva(legend)
+
+Dalam EMT, untuk menambahkan judul dapat dilakukan dengan title="..."\\
+untuk menambahkan sumbu x dan sumbu y dapat dilakukan dengan x1="...",
+y1="..."\\
+sebagai contoh:
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("x^2-4*x"):
+\end{eulerprompt}
+\eulerimg{12}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-047.png}
+\begin{eulercomment}
+untuk menambahkan judul dapat dilakukan dengan title="..."\\
+untuk menambahkan sumbu x dan sumbu y dapat dilakukan dengan x1="...",
+y1="..."
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("x^2-4*x",title="FUNGSI y=x^2-4*x",yl="Sumbu y",xl="Sumbu x"):
+\end{eulerprompt}
+\eulerimg{12}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-048.png}
+\begin{eulercomment}
+Selain itu juga dapat dengan cara lain seperti contoh berikut:
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "x^3-x"; ...
+>  plot2d(expr,title="y="+expr,xl="Sumbu x",yl="Sumbu y"); ...
+>  label("(1,0)",1,0);  label("Max",E,expr(E),pos="lc"): 
+\end{eulerprompt}
+\eulerimg{12}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-049.png}
+\eulerheading{Mengatur ukuran gambar,format(style),dan warna kurva}
+\begin{eulercomment}
+Untuk mengubah ukuran, dapat dilakukan dengan menggunakan
+aspect="...", semakin besar nilai aspect, maka ukuran kurva akan
+semakin kecil, begitupun sebaliknya
+
+untuk mengganti style, dapat dipilih dengan berbagai pilihan\\
+style="...", dapat dipilih dari, misal : "-","\_',"-.",".-.","-.-".
+
+untuk warna dapat dipilih sebagai salah satu warna default\\
+color="...", warna default= red,green,blue,yellow, dll
+
+sebagai contoh:
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1); plot2d("exp(x^2-3)"):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-050.png}
+\begin{eulercomment}
+ukuran kurva dapat diganti dengan mengganti nilai aspect="...",
+semakin besar nilai aspect, maka ukuran kurva akan semakin kecil Untuk
+mengganti warna dapat ditambahkan dengan color="...", sedangkan untuk
+mengganti format(style) dapat dilakukan dengan menambahkan style="..."
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(2); plot2d("exp(x^2-3)", color=red, style="--"):
+\end{eulerprompt}
+\eulerimg{13}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-051.png}
+\begin{eulercomment}
+Berikut adalah tampilan warna EMT yang telah ditentukan
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect (1) ; columnsplot (ones(1,16),lab=0:15,grid=0, color=0:15) :
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-052.png}
+\begin{eulercomment}
+selain menggunakan warna default, untuk mengubah warna dapat juga
+dengan menggunakan kode warna di atas\\
+sebagai contoh:
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1); plot2d("exp(x^3+2*x)",r=3, color=1, style="--"):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-053.png}
+\begin{euleroutput}
+  
+\end{euleroutput}
+\eulerheading{Membuat Gambar Kurva yang Bersifat Interaktif}
+\begin{eulercomment}
+Saat memplot fungsi atau ekspresi, parameter \textgreater{}user memungkinkan
+pengguna untuk memperbesar dan menggeser plot dengan tombol kursor
+atau mouse. Pengguna dapat
+
+- perbesar dengan + atau -\\
+- pindahkan plot dengan tombol kursor\\
+- pilih jendela plot dengan mouse\\
+- atur ulang tampilan dengan spasi\\
+- keluar dengan kembali
+
+Tombol spasi akan mengatur ulang plot ke jendela plot asli.
+
+Saat memplot data, flag \textgreater{}user hanya akan menunggu penekanan tombol.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(\{\{"x^3-a*x",a=1\}\},>user,title="Press any key!"); ...
+>insimg;  
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-054.png}
+\begin{eulerprompt}
+>plot2d("exp(x)*sin(x)",user=true, ...
+>  title="+/- or cursor keys (return to exit)"):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-055.png}
+\begin{eulercomment}
+Berikut ini menunjukkan cara interaksi pengguna tingkat lanjut (lihat
+tutorial tentang pemrograman untuk detailnya).
+
+Fungsi bawaan mousedrag() menunggu event mouse atau keyboard. Ini
+melaporkan mouse ke bawah, mouse dipindahkan atau mouse ke atas, dan
+penekanan tombol. Fungsi dragpoints() memanfaatkan ini, dan
+memungkinkan pengguna menyeret titik mana pun dalam plot.
+
+Kita membutuhkan fungsi plot terlebih dahulu. Sebagai contoh, kita
+interpolasi dalam 5 titik dengan polinomial. Fungsi harus diplot ke
+area plot tetap.
+\end{eulercomment}
+\begin{eulerprompt}
+>function plotf(xp,yp,select) ...
+\end{eulerprompt}
+\begin{eulerudf}
+    d=interp(xp,yp);
+    plot2d("interpval(xp,d,x)";d,xp,r=2);
+    plot2d(xp,yp,>points,>add);
+    if select>0 then
+      plot2d(xp[select],yp[select],color=red,>points,>add);
+    endif;
+    title("Drag one point, or press space or return!");
+  endfunction
+\end{eulerudf}
+\begin{eulercomment}
+Perhatikan parameter titik koma di plot2d (d dan xp), yang diteruskan
+ke evaluasi fungsi interp(). Tanpa ini, kita harus menulis fungsi
+plotinterp() terlebih dahulu, mengakses nilai secara global.
+
+Sekarang kita menghasilkan beberapa nilai acak, dan membiarkan
+pengguna menyeret poin.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=-1:0.5:1; dragpoints("plotf",t,random(size(t))-0.5):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-056.png}
+\begin{eulercomment}
+Ada juga fungsi, yang memplot fungsi lain tergantung pada vektor
+parameter, dan memungkinkan pengguna menyesuaikan parameter ini.
+
+Pertama kita membutuhkan fungsi plot.
+\end{eulercomment}
+\begin{eulerprompt}
+>function plotf([a,b]) := plot2d("exp(a*x)*cos(2pi*b*x)",0,2pi;a,b);
+\end{eulerprompt}
+\begin{eulercomment}
+Kemudian kita membutuhkan nama untuk parameter, nilai awal dan matriks
+rentang nx2, opsional baris judul.\\
+Ada slider interaktif, yang dapat mengatur nilai oleh pengguna. Fungsi
+dragvalues() menyediakan ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>dragvalues("plotf",["a","b"],[-1,2],[[-2,2];[1,10]], ...
+>  heading="Drag these values:",hcolor=black):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-057.png}
+\begin{eulercomment}
+Dimungkinkan untuk membatasi nilai yang diseret ke bilangan bulat.
+Sebagai contoh, kita menulis fungsi plot, yang memplot polinomial
+Taylor derajat n ke fungsi kosinus.
+\end{eulercomment}
+\begin{eulerprompt}
+>function plotf(n) ...
+\end{eulerprompt}
+\begin{eulerudf}
+  plot2d("cos(x)",0,2pi,>square,grid=6);
+  plot2d(&"taylor(cos(x),x,0,@n)",color=blue,>add);
+  textbox("Taylor polynomial of degree "+n,0.1,0.02,style="t",>left);
+  endfunction
+\end{eulerudf}
+\begin{eulercomment}
+Sekarang kami mengizinkan derajat n bervariasi dari 0 hingga 20 dalam
+20 pemberhentian. Hasil dragvalues() digunakan untuk memplot sketsa
+dengan n ini, dan untuk memasukkan plot ke dalam buku catatan.
+\end{eulercomment}
+\begin{eulerprompt}
+>nd=dragvalues("plotf","degree",2,[0,20],20,y=0.8, ...
+>   heading="Drag the value:"); ...
+>plotf(nd):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-058.png}
+\begin{eulercomment}
+Berikut ini adalah demonstrasi sederhana dari fungsi tersebut.
+Pengguna dapat menggambar di atas jendela plot, meninggalkan jejak
+poin.
+\end{eulercomment}
+\begin{eulerprompt}
+>function dragtest ...
+\end{eulerprompt}
+\begin{eulerudf}
+    plot2d(none,r=1,title="Drag with the mouse, or press any key!");
+    start=0;
+    repeat
+      \{flag,m,time\}=mousedrag();
+      if flag==0 then return; endif;
+      if flag==2 then
+        hold on; mark(m[1],m[2]); hold off;
+      endif;
+    end
+  endfunction
+\end{eulerudf}
+\begin{eulerprompt}
+>dragtest // lihat hasilnya dan cobalah lakukan!
+\end{eulerprompt}
+\eulerheading{Menggambar Sekumpulan Kurva dengan Satu Perintah}
+\begin{eulercomment}
+Secara default, EMT menghitung tick sumbu otomatis dan menambahkan
+label ke setiap tick. Ini dapat diubah dengan parameter grid. Gaya
+default sumbu dan label dapat dimodifikasi. Selain itu, label dan
+judul dapat ditambahkan secara manual. Untuk mengatur ulang ke gaya
+default, gunakan reset().
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect();
+>figure(3,4); ...
+> figure(1); plot2d("x^3-x",grid=0); ... // no grid, frame or axis
+> figure(2); plot2d("x^3-x",grid=1); ... // x-y-axis
+> figure(3); plot2d("x^3-x",grid=2); ... // default ticks
+> figure(4); plot2d("x^3-x",grid=3); ... // x-y- axis with labels inside
+> figure(5); plot2d("x^3-x",grid=4); ... // no ticks, only labels
+> figure(6); plot2d("x^3-x",grid=5); ... // default, but no margin
+> figure(7); plot2d("x^3-x",grid=6); ... // axes only
+> figure(8); plot2d("x^3-x",grid=7); ... // axes only, ticks at axis
+> figure(9); plot2d("x^3-x",grid=8); ... // axes only, finer ticks at axis
+> figure(10); plot2d("x^3-x",grid=9); ... // default, small ticks inside
+> figure(11); plot2d("x^3-x",grid=10); ...// no ticks, axes only
+> figure(0):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-059.png}
+\begin{eulercomment}
+Parameter \textless{}frame mematikan frame, dan framecolor=blue mengatur frame
+ke warna biru.
+
+Jika Anda ingin centang sendiri, Anda dapat menggunakan style=0, dan
+menambahkan semuanya nanti.
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1.5); 
+>plot2d("x^3-x",grid=0); // plot
+>frame; xgrid([-1,0,1]); ygrid(0): // add frame and grid
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-060.png}
+\begin{eulercomment}
+Untuk judul plot dan label sumbu, lihat contoh berikut.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("exp(x)",-1,1);
+>textcolor(black); // set the text color to black
+>title(latex("y=e^x")); // title above the plot
+>xlabel(latex("x")); // "x" for x-axis
+>ylabel(latex("y"),>vertical); // vertical "y" for y-axis
+>label(latex("(0,1)"),0,1,color=blue): // label a point
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-061.png}
+\begin{eulercomment}
+Sumbu dapat digambar secara terpisah dengan xaxis() dan yaxis().
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("x^3-x",<grid,<frame);
+>xaxis(0,xx=-2:1,style="->"); yaxis(0,yy=-5:5,style="->"):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-062.png}
+\begin{eulercomment}
+Teks pada plot dapat diatur dengan label(). Dalam contoh berikut, "lc"
+berarti tengah bawah. Ini mengatur posisi label relatif terhadap
+koordinat plot.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x) &= x^3-x
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                   3
+                                  x  - x
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>plot2d(f,-1,1,>square);
+>x0=fmin(f,0,1); // compute point of minimum
+>label("Rel. Min.",x0,f(x0),pos="lc"): // add a label there
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-063.png}
+\begin{eulercomment}
+Ada juga kotak teks.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(&f(x),-1,1,-2,2); // function
+>plot2d(&diff(f(x),x),>add,style="--",color=red); // derivative
+>labelbox(["f","f'"],["-","--"],[black,red]): // label box
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-064.png}
+\begin{eulerprompt}
+>plot2d(["exp(x)","1+x"],color=[black,blue],style=["-","-.-"]):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-065.png}
+\begin{eulerprompt}
+>gridstyle("->",color=gray,textcolor=gray,framecolor=gray);  ...
+> plot2d("x^3-x",grid=1);   ...
+> settitle("y=x^3-x",color=black); ...
+> label("x",2,0,pos="bc",color=gray);  ...
+> label("y",0,6,pos="cl",color=gray); ...
+> reset():
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-066.png}
+\begin{eulercomment}
+Untuk kontrol lebih, sumbu x dan sumbu y dapat dilakukan secara
+manual.
+
+Perintah fullwindow() memperluas jendela plot karena kita tidak lagi
+membutuhkan tempat untuk label di luar jendela plot. Gunakan
+shrinkwindow() atau reset() untuk mengatur ulang ke default.
+\end{eulercomment}
+\begin{eulerprompt}
+>fullwindow; ...
+> gridstyle(color=darkgray,textcolor=darkgray); ...
+> plot2d(["2^x","1","2^(-x)"],a=-2,b=2,c=0,d=4,<grid,color=4:6,<frame); ...
+> xaxis(0,-2:1,style="->"); xaxis(0,2,"x",<axis); ...
+> yaxis(0,4,"y",style="->"); ...
+> yaxis(-2,1:4,>left); ...
+> yaxis(2,2^(-2:2),style=".",<left); ...
+> labelbox(["2^x","1","2^-x"],colors=4:6,x=0.8,y=0.2); ...
+> reset:
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-067.png}
+\begin{eulercomment}
+Berikut adalah contoh lain, di mana string Unicode digunakan dan sumbu
+di luar area plot.
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1.5); 
+>plot2d(["sin(x)","cos(x)"],0,2pi,color=[red,green],<grid,<frame); ...
+> xaxis(-1.1,(0:2)*pi,xt=["0",u"&pi;",u"2&pi;"],style="-",>ticks,>zero);  ...
+> xgrid((0:0.5:2)*pi,<ticks); ...
+> yaxis(-0.1*pi,-1:0.2:1,style="-",>zero,>grid); ...
+> labelbox(["sin","cos"],colors=[red,green],x=0.5,y=0.2,>left); ...
+> xlabel(u"&phi;"); ylabel(u"f(&phi;)"):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-068.png}
+\eulerheading{Merencanakan Data 2D}
+\begin{eulercomment}
+Jika x dan y adalah vektor data, data ini akan digunakan sebagai
+koordinat x dan y dari suatu kurva. Dalam hal ini, a, b, c, dan d,
+atau radius r dapat ditentukan, atau jendela plot akan menyesuaikan
+secara otomatis dengan data. Atau, \textgreater{}persegi dapat diatur untuk menjaga
+rasio aspek persegi.
+
+Memplot ekspresi hanyalah singkatan untuk plot data. Untuk plot data,
+Anda memerlukan satu atau beberapa baris nilai x, dan satu atau
+beberapa baris nilai y. Dari rentang dan nilai-x, fungsi plot2d akan
+menghitung data yang akan diplot, secara default dengan evaluasi
+fungsi yang adaptif. Untuk plot titik gunakan "\textgreater{}points", untuk garis
+campuran dan titik gunakan "\textgreater{}addpoints".
+
+Tapi Anda bisa memasukkan data secara langsung.
+
+- Gunakan vektor baris untuk x dan y untuk satu fungsi.\\
+- Matriks untuk x dan y diplot baris demi baris.
+
+Berikut adalah contoh dengan satu baris untuk x dan y.
+\end{eulercomment}
+\begin{eulerprompt}
+>x=-10:0.1:10; y=exp(-x^2)*x; plot2d(x,y):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-069.png}
+\begin{eulercomment}
+Data juga dapat diplot sebagai titik. Gunakan poin=true untuk ini.
+Plotnya bekerja seperti poligon, tetapi hanya menggambar
+sudut-sudutnya.
+
+- style="...": Pilih dari "[]", "\textless{}\textgreater{}", "o", ".", "..", "+", "*", "[]#",
+"\textless{} \textgreater{}#", "o#", "..#", "#", "\textbar{}".
+
+Untuk memplot set poin gunakan \textgreater{}points. Jika warna adalah vektor
+warna, setiap titik\\
+mendapat warna yang berbeda. Untuk matriks koordinat dan vektor kolom,
+warna berlaku untuk baris matriks.\\
+Parameter \textgreater{}addpoints menambahkan titik ke segmen garis untuk plot
+data.
+\end{eulercomment}
+\begin{eulerprompt}
+>xdata=[1,1.5,2.5,3,4]; ydata=[3,3.1,2.8,2.9,2.7]; // data
+>plot2d(xdata,ydata,a=0.5,b=4.5,c=2.5,d=3.5,style="."); // lines
+>plot2d(xdata,ydata,>points,>add,style="o"): // add points
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-070.png}
+\begin{eulerprompt}
+>p=polyfit(xdata,ydata,1); // get regression line
+>plot2d("polyval(p,x)",>add,color=red): // add plot of line
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-071.png}
+\eulerheading{Menggambar Daerah Yang Dibatasi Kurva}
+\begin{eulercomment}
+Plot data benar-benar poligon. Kita juga dapat memplot kurva atau
+kurva terisi.
+
+- terisi=benar mengisi plot.\\
+- style="...": Pilih dari "#", "/", "\textbackslash{}", "\textbackslash{}/".\\
+- fillcolor: Lihat di atas untuk warna yang tersedia.
+
+Warna isian ditentukan oleh argumen "fillcolor", dan pada \textless{}outline
+opsional mencegah menggambar batas untuk semua gaya kecuali yang
+default.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=linspace(0,2pi,1000); // parameter for curve
+>x=sin(t)*exp(t/pi); y=cos(t)*exp(t/pi); // x(t) and y(t)
+>figure(1,2); aspect(16/9)
+>figure(1); plot2d(x,y,r=10); // plot curve
+>figure(2); plot2d(x,y,r=10,>filled,style="/",fillcolor=red); // fill curve
+>figure(0):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-072.png}
+\begin{eulercomment}
+Dalam contoh berikut kami memplot elips terisi dan dua segi enam
+terisi menggunakan kurva tertutup dengan 6 titik dengan gaya isian
+berbeda.
+\end{eulercomment}
+\begin{eulerprompt}
+>x=linspace(0,2pi,1000); plot2d(sin(x),cos(x)*0.5,r=1,>filled,style="/"):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-073.png}
+\begin{eulerprompt}
+>t=linspace(0,2pi,6); ...
+>plot2d(cos(t),sin(t),>filled,style="/",fillcolor=red,r=1.2):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-074.png}
+\begin{eulerprompt}
+>t=linspace(0,2pi,6); plot2d(cos(t),sin(t),>filled,style="#"):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-075.png}
+\begin{eulercomment}
+Contoh lainnya adalah segi tujuh, yang kita buat dengan 7 titik pada
+lingkaran satuan.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=linspace(0,2pi,7);  ...
+> plot2d(cos(t),sin(t),r=1,>filled,style="/",fillcolor=red):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-076.png}
+\begin{eulercomment}
+Berikut ini adalah himpunan nilai maksimal dari empat kondisi linier
+yang kurang dari atau sama dengan 3. Ini adalah A[k].v\textless{}=3 untuk semua
+baris A. Untuk mendapatkan sudut yang bagus, kita menggunakan n yang
+relatif besar.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[2,1;1,2;-1,0;0,-1];
+>function f(x,y) := max([x,y].A');
+>plot2d("f",r=4,level=[0;3],color=green,n=111):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-077.png}
+\begin{eulercomment}
+Poin utama dari bahasa matriks adalah memungkinkan untuk menghasilkan
+tabel fungsi dengan mudah.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=linspace(0,2pi,1000); x=cos(3*t); y=sin(4*t);
+\end{eulerprompt}
+\begin{eulercomment}
+Kami sekarang memiliki vektor x dan y nilai. plot2d() dapat memplot
+nilai-nilai ini\\
+sebagai kurva yang menghubungkan titik-titik. Plotnya bisa diisi. Pada
+kasus ini\\
+ini menghasilkan hasil yang bagus karena aturan lilitan, yang
+digunakan untuk\\
+isi.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(x,y,<grid,<frame,>filled):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-078.png}
+\begin{eulercomment}
+Sebuah vektor interval diplot terhadap nilai x sebagai daerah terisi\\
+antara nilai interval bawah dan atas.
+
+Hal ini dapat berguna untuk memplot kesalahan perhitungan. Tapi itu
+bisa\\
+juga digunakan untuk memplot kesalahan statistik.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=0:0.1:1; ...
+> plot2d(t,interval(t-random(size(t)),t+random(size(t))),style="|");  ...
+> plot2d(t,t,add=true):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-079.png}
+\begin{eulercomment}
+Jika x adalah vektor yang diurutkan, dan y adalah vektor interval,
+maka plot2d akan memplot rentang interval yang terisi dalam bidang.
+Gaya isian sama dengan gaya poligon.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=-1:0.01:1; x=~t-0.01,t+0.01~; y=x^3-x;
+>plot2d(t,y):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-080.png}
+\begin{eulercomment}
+Dimungkinkan untuk mengisi wilayah nilai untuk fungsi tertentu. Untuk\\
+ini, level harus berupa matriks 2xn. Baris pertama adalah batas bawah\\
+dan baris kedua berisi batas atas.
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "2*x^2+x*y+3*y^4+y"; // define an expression f(x,y)
+>plot2d(expr,level=[0;1],style="-",color=blue): // 0 <= f(x,y) <= 1
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-081.png}
+\begin{eulercomment}
+Kami juga dapat mengisi rentang nilai seperti
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+-1 \le (x^2+y^2)^2-x^2+y^2 \le 0.
+\]
+\end{eulerformula}
+\begin{eulercomment}
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("(x^2+y^2)^2-x^2+y^2",r=1.2,level=[-1;0],style="/"):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-082.png}
+\begin{eulerprompt}
+>plot2d("cos(x)","sin(x)^3",xmin=0,xmax=2pi,>filled,style="/"):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-083.png}
+\eulerheading{Grafik Fungsi Parametrik}
+\begin{eulercomment}
+Nilai-x tidak perlu diurutkan. (x,y) hanya menggambarkan kurva. Jika x
+diurutkan, kurva tersebut merupakan grafik fungsi.
+
+Dalam contoh berikut, kami memplot spiral
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+\gamma(t) = t \cdot (\cos(2\pi t),\sin(2\pi t))
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Kita perlu menggunakan banyak titik untuk tampilan yang halus atau
+fungsi adaptive() untuk mengevaluasi ekspresi (lihat fungsi adaptive()
+untuk lebih jelasnya).
+\end{eulercomment}
+\begin{eulerprompt}
+>t=linspace(0,1,1000); ...
+>plot2d(t*cos(2*pi*t),t*sin(2*pi*t),r=1):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-084.png}
+\begin{eulercomment}
+Atau, dimungkinkan untuk menggunakan dua ekspresi untuk kurva. Berikut
+ini plot kurva yang sama seperti di atas.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("x*cos(2*pi*x)","x*sin(2*pi*x)",xmin=0,xmax=1,r=1):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-085.png}
+\begin{eulerprompt}
+>t=linspace(0,1,1000); r=exp(-t); x=r*cos(2pi*t); y=r*sin(2pi*t);
+>plot2d(x,y,r=1):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-086.png}
+\begin{eulercomment}
+Dalam contoh berikutnya, kami memplot kurva
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+\gamma(t) = (r(t) \cos(t), r(t) \sin(t))
+\]
+\end{eulerformula}
+\begin{eulercomment}
+dengan
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+r(t) = 1 + \dfrac{\sin(3t)}{2}.
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>t=linspace(0,2pi,1000); r=1+sin(3*t)/2; x=r*cos(t); y=r*sin(t); ...
+>plot2d(x,y,>filled,fillcolor=red,style="/",r=1.5):
+\end{eulerprompt}
+\eulerimg{14}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-087.png}
+\eulerheading{Menggambar Grafik Bilangan Kompleks}
+\begin{eulercomment}
+Array bilangan kompleks juga dapat diplot. Kemudian titik-titik grid
+akan terhubung. Jika sejumlah garis kisi ditentukan (atau vektor garis
+kisi 1x2) dalam argumen cgrid, hanya garis kisi tersebut yang
+terlihat.
+
+Matriks bilangan kompleks akan secara otomatis diplot sebagai kisi di
+bidang kompleks.
+
+Dalam contoh berikut, kami memplot gambar lingkaran satuan di bawah
+fungsi eksponensial. Parameter cgrid menyembunyikan beberapa kurva
+grid.
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(); r=linspace(0,1,50); a=linspace(0,2pi,80)'; z=r*exp(I*a);...
+>plot2d(z,a=-1.25,b=1.25,c=-1.25,d=1.25,cgrid=10):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-088.png}
+\begin{eulerprompt}
+>aspect(1.25); r=linspace(0,1,50); a=linspace(0,2pi,200)'; z=r*exp(I*a);
+>plot2d(exp(z),cgrid=[40,10]):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-089.png}
+\begin{eulerprompt}
+>r=linspace(0,1,10); a=linspace(0,2pi,40)'; z=r*exp(I*a);
+>plot2d(exp(z),>points,>add):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-090.png}
+\begin{eulercomment}
+Sebuah vektor bilangan kompleks secara otomatis diplot sebagai kurva
+pada bidang kompleks dengan bagian real dan bagian imajiner.
+
+Dalam contoh, kami memplot lingkaran satuan dengan
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+\gamma(t) = e^{it}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>t=linspace(0,2pi,1000); ...
+>plot2d(exp(I*t)+exp(4*I*t),r=2):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-091.png}
+\eulerheading{Plot Statistik}
+\begin{eulercomment}
+Ada banyak fungsi yang dikhususkan pada plot statistik. Salah satu
+plot yang sering digunakan adalah plot kolom.
+
+Jumlah kumulatif dari nilai terdistribusi 0-1-normal menghasilkan
+jalan acak.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(cumsum(randnormal(1,1000))):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-092.png}
+\begin{eulercomment}
+Menggunakan dua baris menunjukkan jalan dalam dua dimensi.
+\end{eulercomment}
+\begin{eulerprompt}
+>X=cumsum(randnormal(2,1000)); plot2d(X[1],X[2]):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-093.png}
+\begin{eulerprompt}
+>columnsplot(cumsum(random(10)),style="/",color=blue):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-094.png}
+\begin{eulercomment}
+Itu juga dapat menampilkan string sebagai label.
+\end{eulercomment}
+\begin{eulerprompt}
+>months=["Jan","Feb","Mar","Apr","May","Jun", ...
+>  "Jul","Aug","Sep","Oct","Nov","Dec"];
+>values=[10,12,12,18,22,28,30,26,22,18,12,8];
+>columnsplot(values,lab=months,color=red,style="-");
+>title("Temperature"):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-095.png}
+\begin{eulerprompt}
+>k=0:10;
+>plot2d(k,bin(10,k),>bar):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-096.png}
+\begin{eulerprompt}
+>plot2d(k,bin(10,k)); plot2d(k,bin(10,k),>points,>add):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-097.png}
+\begin{eulerprompt}
+>plot2d(normal(1000),normal(1000),>points,grid=6,style=".."):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-098.png}
+\begin{eulerprompt}
+>plot2d(normal(1,1000),>distribution,style="O"):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-099.png}
+\begin{eulerprompt}
+>plot2d("qnormal",0,5;2.5,0.5,>filled):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-100.png}
+\begin{eulercomment}
+Untuk memplot distribusi statistik eksperimental, Anda dapat
+menggunakan distribution=n dengan plot2d.
+\end{eulercomment}
+\begin{eulerprompt}
+>w=randexponential(1,1000); // exponential distribution
+>plot2d(w,>distribution): // or distribution=n with n intervals
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-101.png}
+\begin{eulercomment}
+Atau Anda dapat menghitung distribusi dari data dan memplot hasilnya
+dengan \textgreater{}bar di plot3d, atau dengan plot kolom.
+\end{eulercomment}
+\begin{eulerprompt}
+>w=normal(1000); // 0-1-normal distribution
+>\{x,y\}=histo(w,10,v=[-6,-4,-2,-1,0,1,2,4,6]); // interval bounds v
+>plot2d(x,y,>bar):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-102.png}
+\begin{eulercomment}
+Fungsi statplot() menyetel gaya dengan string sederhana.
+\end{eulercomment}
+\begin{eulerprompt}
+>statplot(1:10,cumsum(random(10)),"b"):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-103.png}
+\begin{eulerprompt}
+>n=10; i=0:n; ...
+>plot2d(i,bin(n,i)/2^n,a=0,b=10,c=0,d=0.3); ...
+>plot2d(i,bin(n,i)/2^n,points=true,style="ow",add=true,color=blue):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-104.png}
+\begin{eulercomment}
+Selain itu, data dapat diplot sebagai batang. Dalam hal ini, x harus
+diurutkan dan satu elemen lebih panjang dari y. Bilah akan memanjang
+dari x[i] ke x[i+1] dengan nilai y[i]. Jika x memiliki ukuran yang
+sama dengan y, maka akan diperpanjang satu elemen dengan spasi
+terakhir.
+
+Gaya isian dapat digunakan seperti di atas.
+\end{eulercomment}
+\begin{eulerprompt}
+>n=10; k=bin(n,0:n); ...
+>plot2d(-0.5:n+0.5,k,bar=true,fillcolor=lightgray):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-105.png}
+\begin{eulercomment}
+Data untuk plot batang (bar=1) dan histogram (histogram=1) dapat
+dinyatakan secara eksplisit dalam xv dan yv, atau dapat dihitung dari
+distribusi empiris dalam xv dengan \textgreater{}distribution (atau
+distribution=n). Histogram nilai xv akan dihitung secara otomatis
+dengan \textgreater{}histogram. Jika \textgreater{}even ditentukan, nilai xv akan dihitung dalam
+interval bilangan bulat.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(normal(10000),distribution=50):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-106.png}
+\begin{eulerprompt}
+>k=0:10; m=bin(10,k); x=(0:11)-0.5; plot2d(x,m,>bar):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-107.png}
+\begin{eulerprompt}
+>columnsplot(m,k):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-108.png}
+\begin{eulerprompt}
+>plot2d(random(600)*6,histogram=6):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-109.png}
+\begin{eulercomment}
+Untuk distribusi, ada parameter distribution=n, yang menghitung nilai
+secara otomatis dan mencetak distribusi relatif dengan n sub-interval.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(normal(1,1000),distribution=10,style="\(\backslash\)/"):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-110.png}
+\begin{eulercomment}
+Dengan parameter even=true, ini akan menggunakan interval integer.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(intrandom(1,1000,10),distribution=10,even=true):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-111.png}
+\begin{eulercomment}
+Perhatikan bahwa ada banyak plot statistik, yang mungkin berguna.
+Silahkan lihat tutorial tentang statistik.
+\end{eulercomment}
+\begin{eulerprompt}
+>columnsplot(getmultiplicities(1:6,intrandom(1,6000,6))):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-112.png}
+\begin{eulerprompt}
+>plot2d(normal(1,1000),>distribution); ...
+>  plot2d("qnormal(x)",color=red,thickness=2,>add):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-113.png}
+\begin{eulercomment}
+Ada juga banyak plot khusus untuk statistik. Boxplot menunjukkan
+kuartil dari distribusi ini dan banyak outlier. Menurut definisi,
+outlier dalam boxplot adalah data yang melebihi 1,5 kali kisaran 50\%
+tengah plot.
+\end{eulercomment}
+\begin{eulerprompt}
+>M=normal(5,1000); boxplot(quartiles(M)):
+\end{eulerprompt}
+\eulerimg{21}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-114.png}
+\eulerheading{Fungsi Implisit}
+\begin{eulercomment}
+Plot implisit menunjukkan garis level yang menyelesaikan f(x,y)=level,
+di mana "level" dapat berupa nilai tunggal atau vektor nilai. Jika
+level="auto", akan ada garis level nc, yang akan menyebar antara
+fungsi minimum dan maksimum secara merata. Warna yang lebih gelap atau
+lebih terang dapat ditambahkan dengan \textgreater{}hue untuk menunjukkan nilai
+fungsi. Untuk fungsi implisit, xv harus berupa fungsi atau ekspresi
+dari parameter x dan y, atau, sebagai alternatif, xv dapat berupa
+matriks nilai.
+
+Euler dapat menandai garis level
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y) = c
+\]
+\end{eulerformula}
+\begin{eulercomment}
+dari fungsi apapun.
+
+Untuk menggambar himpunan f(x,y)=c untuk satu atau lebih konstanta c,
+Anda dapat menggunakan plot2d() dengan plot implisitnya di dalam
+bidang. Parameter untuk c adalah level=c, di mana c dapat berupa
+vektor garis level. Selain itu, skema warna dapat digambar di latar
+belakang untuk menunjukkan nilai fungsi untuk setiap titik dalam plot.
+Parameter "n" menentukan kehalusan plot.
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1.5); 
+>plot2d("x^2+y^2-x*y-x",r=1.5,level=0,contourcolor=red):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-115.png}
+\begin{eulerprompt}
+>expr := "2*x^2+x*y+3*y^4+y"; // define an expression f(x,y)
+>plot2d(expr,level=0): // Solutions of f(x,y)=0
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-116.png}
+\begin{eulerprompt}
+>plot2d(expr,level=0:0.5:20,>hue,contourcolor=white,n=200): // nice
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-117.png}
+\begin{eulerprompt}
+>plot2d(expr,level=0:0.5:20,>hue,>spectral,n=200,grid=4): // nicer
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-118.png}
+\begin{eulercomment}
+Ini berfungsi untuk plot data juga. Tetapi Anda harus menentukan
+rentangnya\\
+untuk label sumbu.
+\end{eulercomment}
+\begin{eulerprompt}
+>x=-2:0.05:1; y=x'; z=expr(x,y);
+>plot2d(z,level=0,a=-1,b=2,c=-2,d=1,>hue):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-119.png}
+\begin{eulerprompt}
+>plot2d("x^3-y^2",>contour,>hue,>spectral):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-120.png}
+\begin{eulerprompt}
+>plot2d("x^3-y^2",level=0,contourwidth=3,>add,contourcolor=red):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-121.png}
+\begin{eulerprompt}
+>z=z+normal(size(z))*0.2;
+>plot2d(z,level=0.5,a=-1,b=2,c=-2,d=1):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-122.png}
+\begin{eulerprompt}
+>plot2d(expr,level=[0:0.2:5;0.05:0.2:5.05],color=lightgray):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-123.png}
+\begin{eulerprompt}
+>plot2d("x^2+y^3+x*y",level=1,r=4,n=100):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-124.png}
+\begin{eulerprompt}
+>plot2d("x^2+2*y^2-x*y",level=0:0.1:10,n=100,contourcolor=white,>hue):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-125.png}
+\begin{eulercomment}
+Juga dimungkinkan untuk mengisi set
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+a \le f(x,y) \le b
+\]
+\end{eulerformula}
+\begin{eulercomment}
+dengan rentang tingkat.
+
+Dimungkinkan untuk mengisi wilayah nilai untuk fungsi tertentu. Untuk
+ini, level harus berupa matriks 2xn. Baris pertama adalah batas bawah
+dan baris kedua berisi batas atas.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(expr,level=[0;1],style="-",color=blue): // 0 <= f(x,y) <= 1
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-126.png}
+\begin{eulercomment}
+Plot implisit juga dapat menunjukkan rentang level. Kemudian level
+harus berupa matriks 2xn dari interval level, di mana baris pertama
+berisi awal dan baris kedua adalah akhir dari setiap interval. Atau,
+vektor baris sederhana dapat digunakan untuk level, dan parameter dl
+memperluas nilai level ke interval.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("x^4+y^4",r=1.5,level=[0;1],color=blue,style="/"):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-127.png}
+\begin{eulerprompt}
+>plot2d("x^2+y^3+x*y",level=[0,2,4;1,3,5],style="/",r=2,n=100):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-128.png}
+\begin{eulerprompt}
+>plot2d("x^2+y^3+x*y",level=-10:20,r=2,style="-",dl=0.1,n=100):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-129.png}
+\begin{eulerprompt}
+>plot2d("sin(x)*cos(y)",r=pi,>hue,>levels,n=100):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-130.png}
+\begin{eulercomment}
+Dimungkinkan juga untuk menandai suatu wilayah
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+a \le f(x,y) \le b.
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Ini dilakukan dengan menambahkan level dengan dua baris.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("(x^2+y^2-1)^3-x^2*y^3",r=1.3, ...
+>  style="#",color=red,<outline, ...
+>  level=[-2;0],n=100):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-131.png}
+\begin{eulercomment}
+Dimungkinkan untuk menentukan level tertentu. Misalnya, kita dapat
+memplot solusi persamaan seperti
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+x^3-xy+x^2y^2=6
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>plot2d("x^3-x*y+x^2*y^2",r=6,level=1,n=100):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-132.png}
+\begin{eulerprompt}
+>function starplot1 (v, style="/", color=green, lab=none) ...
+\end{eulerprompt}
+\begin{eulerudf}
+    if !holding() then clg; endif;
+    w=window(); window(0,0,1024,1024);
+    h=holding(1);
+    r=max(abs(v))*1.2;
+    setplot(-r,r,-r,r);
+    n=cols(v); t=linspace(0,2pi,n);
+    v=v|v[1]; c=v*cos(t); s=v*sin(t);
+    cl=barcolor(color); st=barstyle(style);
+    loop 1 to n
+      polygon([0,c[#],c[#+1]],[0,s[#],s[#+1]],1);
+      if lab!=none then
+        rlab=v[#]+r*0.1;
+        \{col,row\}=toscreen(cos(t[#])*rlab,sin(t[#])*rlab);
+        ctext(""+lab[#],col,row-textheight()/2);
+      endif;
+    end;
+    barcolor(cl); barstyle(st);
+    holding(h);
+    window(w);
+  endfunction
+\end{eulerudf}
+\begin{eulercomment}
+Tidak ada kotak atau sumbu kutu di sini. Selain itu, kami menggunakan
+jendela penuh untuk plot.
+
+Kami memanggil reset sebelum kami menguji plot ini untuk mengembalikan
+default grafis. Ini tidak perlu, jika Anda yakin plot Anda berhasil.
+\end{eulercomment}
+\begin{eulerprompt}
+>reset; starplot1(normal(1,10)+5,color=red,lab=1:10):
+\end{eulerprompt}
+\eulerimg{27}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-133.png}
+\begin{eulercomment}
+Terkadang, Anda mungkin ingin merencanakan sesuatu yang tidak dapat
+dilakukan plot2d, tetapi hampir.
+
+Dalam fungsi berikut, kami melakukan plot impuls logaritmik. plot2d
+dapat melakukan plot logaritmik, tetapi tidak untuk batang impuls.
+\end{eulercomment}
+\begin{eulerprompt}
+>function logimpulseplot1 (x,y) ...
+\end{eulerprompt}
+\begin{eulerudf}
+    \{x0,y0\}=makeimpulse(x,log(y)/log(10));
+    plot2d(x0,y0,>bar,grid=0);
+    h=holding(1);
+    frame();
+    xgrid(ticks(x));
+    p=plot();
+    for i=-10 to 10;
+      if i<=p[4] and i>=p[3] then
+         ygrid(i,yt="10^"+i);
+      endif;
+    end;
+    holding(h);
+  endfunction
+\end{eulerudf}
+\begin{eulercomment}
+Mari kita uji dengan nilai yang terdistribusi secara eksponensial.
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1.5); x=1:10; y=-log(random(size(x)))*200; ...
+>logimpulseplot1(x,y):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-134.png}
+\begin{eulercomment}
+Mari kita menganimasikan kurva 2D menggunakan plot langsung. Perintah
+plot(x,y) hanya memplot kurva ke jendela plot. setplot(a,b,c,d)
+mengatur jendela ini.
+
+Fungsi wait(0) memaksa plot untuk muncul di jendela grafik. Jika
+tidak, menggambar ulang terjadi dalam interval waktu yang jarang.
+\end{eulercomment}
+\begin{eulerprompt}
+>function animliss (n,m) ...
+\end{eulerprompt}
+\begin{eulerudf}
+  t=linspace(0,2pi,500);
+  f=0;
+  c=framecolor(0);
+  l=linewidth(2);
+  setplot(-1,1,-1,1);
+  repeat
+    clg;
+    plot(sin(n*t),cos(m*t+f));
+    wait(0);
+    if testkey() then break; endif;
+    f=f+0.02;
+  end;
+  framecolor(c);
+  linewidth(l);
+  endfunction
+\end{eulerudf}
+\begin{eulercomment}
+Tekan sembarang tombol untuk menghentikan animasi ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>animliss(2,3); // lihat hasilnya, jika sudah puas, tekan ENTER
+\end{eulerprompt}
+\eulerheading{Plot Logaritmik}
+\begin{eulercomment}
+EMT menggunakan parameter "logplot" untuk skala logaritmik.\\
+Plot logaritma dapat diplot baik menggunakan skala logaritma dalam y
+dengan logplot=1, atau menggunakan skala logaritma dalam x dan y
+dengan logplot=2, atau dalam x dengan logplot=3.
+
+\end{eulercomment}
+\begin{eulerttcomment}
+ - logplot=1: y-logaritma
+ - logplot=2: x-y-logaritma
+ - logplot=3: x-logaritma
+\end{eulerttcomment}
+\begin{eulerprompt}
+>plot2d("exp(x^3-x)*x^2",1,5,logplot=1):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-135.png}
+\begin{eulerprompt}
+>plot2d("exp(x+sin(x))",0,100,logplot=1):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-136.png}
+\begin{eulerprompt}
+>plot2d("exp(x+sin(x))",10,100,logplot=2):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-137.png}
+\begin{eulerprompt}
+>plot2d("gamma(x)",1,10,logplot=1):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-138.png}
+\begin{eulerprompt}
+>plot2d("log(x*(2+sin(x/100)))",10,1000,logplot=3):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-139.png}
+\begin{eulercomment}
+Ini juga berfungsi dengan plot data.
+\end{eulercomment}
+\begin{eulerprompt}
+>x=10^(1:20); y=x^2-x;
+>plot2d(x,y,logplot=2):
+\end{eulerprompt}
+\eulerimg{17}{images/Vikram Zaky Ardianto_22305144028_Plot 2d-140.png}
+\end{eulernotebook}
+\end{document}
