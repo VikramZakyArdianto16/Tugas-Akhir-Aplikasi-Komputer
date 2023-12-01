@@ -1,4 +1,8 @@
-# Tugas Akhir Aplikom ([zakyardianto4@gmail.com](mailto:zakyardianto4@gmail.com), [vikramzaky.2022@student.uny.ac.id](mailto:zakyardianto4@uny.ac.id))
+# Tugas Akhir Aplikasi Komputer ([zakyardianto4@gmail.com](mailto:zakyardianto4@gmail.com), [vikramzaky.2022@student.uny.ac.id](mailto:zakyardianto4@uny.ac.id))
+
+**Vikram Zaky Ardianto**
+**22305144028**
+**Matematika E 2022**
 
 **Berikut adalah file artikel latex** [PDF](https://github.com/VikramZakyArdianto16/Tugas-Akhir-Aplikasi-Komputer/files/13526544/Vikram.Zaky.Ardianto_Tugas.Akhir.zip)
 **Download file [zip](https://github.com/VikramZakyArdianto16/Tugas-Akhir-Aplikasi-Komputer/files/13526539/Vikram.Zaky.Ardianto_Tugas.Akhir.pdf)
